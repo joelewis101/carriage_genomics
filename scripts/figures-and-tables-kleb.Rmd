@@ -1,0 +1,1050 @@
+---
+title: 'Figures and tables: K. pneumoniae'
+author: "Joe Lewis"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(phytools)
+library(ggtree)
+library(ape)
+library(cowplot)
+library(ggpubr)
+library(tidyverse)
+library(here)
+library(kableExtra)
+library(patchwork)
+library(scales)
+library(viridis)
+```
+
+## Introduction
+
+This document generates figures and tables for Joe's Klebsiella genomics paper.
+
+### Assembly stats and accession numbers
+
+```{r assembly_stats}
+# load accessions and assembly stats
+
+left_join(
+  read_csv(here("data_raw/DASSIM3_accession.csv")) %>% 
+    select("Sample accession","Lane name"),
+  read_tsv("~/Documents/Sanger/DASSIM3/data_processed/quast/transposed_report.tsv") %>% 
+    mutate(Assembly = gsub("\\.contigs_spades","", Assembly),
+         Assembly = gsub("_7_","_7#", Assembly)) %>% 
+    select(Assembly, `# contigs`, N50, `Total length`),
+  by = c("Lane name" = "Assembly")) %>% 
+  rename("No. contigs" = "# contigs") %>% 
+  kbl(caption = "Accession numbers and assembly statistics for included samples") %>% 
+  kable_classic(full_width = FALSE)
+
+```
+
+### MLST, K and O loci
+
+```{r mlst, fig.width=11, fig.height= 6, fig.cap = "FIGURE X: Diversity of Klebsiella chromasomal sequence type (ST, A), K-type (B) and O-type (C). (D) shows cumulative prevalence for ST, K-type and O-types for all isolates in the collection as a function of the number of K-types, O-types, or STs, with each category ordered in size from largest to smallest."}
+read_tsv("~/Documents/Sanger/DASSIM3/data_processed/ariba_mlst/DASSIM3_mlst_summary.tsv") %>% 
+  filter(ST != "ST") %>% 
+  mutate(ST = gsub("\\*", "", ST)) %>%
+  select(ST, lane) -> mlst
+
+read_tsv("~/Documents/Sanger/DASSIM3/data_processed/kleborate/kleborate.all.txt") %>% 
+  mutate(strain = gsub("\\.contigs_spades","",strain)) %>% 
+  filter(ST != "ST") %>% 
+  mutate(type = "DASSIM") %>% 
+  select(-ST) %>% 
+  left_join(
+    mlst,
+    by = c("strain" = "lane")) ->
+  kleborate
+
+malawi_lanes_include <- read_lines(here("data_raw/malawi_context_lanes_retaines_following_qc.txt"))
+
+read_tsv(here("data_raw/all_malawi_context_assemblies_kleborate_output.txt")) %>% 
+  mutate(strain = gsub("\\.contigs_velvet","",strain)) %>% 
+  filter(strain %in% malawi_lanes_include) %>% 
+  mutate(type = "context") -> kleborate2
+
+kleborate %>% 
+  group_by(ST) %>% 
+  mutate(n = n(),
+         ST = paste0("ST",ST)) %>% 
+  filter(n > 1, ST != "STNovel") %>%  
+  ggplot(aes(fct_infreq(ST))) +
+  geom_bar(fill = viridis_pal()(4)[3]) +
+  coord_flip() + 
+  labs(y = "Number", x = element_blank()) +
+  theme_bw()  -> a
+
+kleborate %>% 
+  group_by(K_locus) %>% 
+  mutate(n = n()) %>% 
+  filter(n > 1) %>%  
+  ggplot(aes(fct_infreq(K_locus))) +
+  geom_bar(fill = viridis_pal()(4)[2]) +
+  coord_flip()  +
+  labs(y = "Number", x = element_blank()) +
+  theme_bw()  -> b
+
+kleborate %>% 
+  mutate(O_locus = 
+           case_when(
+             grepl("O1", O_locus) ~ "O1",
+             grepl("O2", O_locus) ~ "O2",
+             TRUE ~ O_locus)
+  ) %>% 
+  group_by(O_locus) %>% 
+  mutate(n = n()) %>% 
+ # filter(n > 1) %>%  
+  ggplot(aes(fct_infreq(O_locus))) +
+  geom_bar(fill = viridis_pal()(4)[1]) +
+  coord_flip() +
+  labs(y = "Number", x = element_blank()) +
+  theme_bw()  -> c
+
+# cum K and O serotypes
+bind_rows(
+  kleborate %>%
+    group_by(K_locus) %>%
+    summarise(n = n()) %>%
+    ungroup() %>%
+    arrange(desc(n)) %>%
+    mutate(
+      n_loci = 1:n(),
+      cum_n = cumsum(n),
+      cum_prop = cum_n / max(cum_n),
+      type = "K-type"
+    ) %>% 
+    rename(Locus = K_locus),
+  kleborate %>%
+      mutate(O_locus = 
+           case_when(
+             grepl("O1", O_locus) ~ "O1",
+             grepl("O2", O_locus) ~ "O2",
+             TRUE ~ O_locus)
+  ) %>% 
+    group_by(O_locus) %>%
+    summarise(n = n()) %>%
+    ungroup() %>%
+    arrange(desc(n)) %>%
+    mutate(
+      n_loci = 1:n(),
+      cum_n = cumsum(n),
+      cum_prop = cum_n / max(cum_n),
+      type = "O-type"
+    ) %>% 
+    rename(Locus = O_locus),
+  kleborate %>%
+    filter(ST != "Novel")  %>% 
+    group_by(ST) %>%
+    summarise(n = n()) %>%
+    ungroup() %>%
+    arrange(desc(n)) %>%
+    mutate(
+      n_loci = 1:n(),
+      cum_n = cumsum(n),
+      cum_prop = cum_n / max(cum_n),
+      type = "ST"
+    ) %>% 
+    rename(Locus = ST)
+) %>% 
+  mutate(type = factor(type, levels = 
+                         c("O-type",
+                           "K-type",
+                           "ST"))) %>% 
+  ggplot(aes(n_loci, cum_prop, color = type)) +
+  geom_line() +
+  theme_bw() +
+  scale_color_manual(values = viridis_pal()(4)[1:3]) +
+  labs(x= "Number of K/O-type/ST", y = "Cum. prevalence") + 
+  theme(legend.title = element_blank()) -> d
+
+(a + b + (c / d)) + plot_annotation(tag_levels = "A") -> stplot
+
+stplot
+ggsave(filename = here("manuscript/kleb/figures/F1_stplot.svg"),plot = stplot,
+       width =11,
+       height = 6
+)
+
+
+```
+
+### Species and population structure
+
+```{r dassim-tree, fig.height = 12, fig.width = 14, fig.cap = "Midpoint-rooted maximum likelihood core gene phylogeny for all samples in collection (A) and restricted to K. pneumoniae sensu stricto (B) showing chromasomal sequence types where black indicates presence and grey absence."}
+
+# what species from kleborate
+
+table(kleborate$species)
+
+tree <- 
+  read.tree("~/Documents/Sanger/DASSIM3/data_processed/iqtree/core_gene_alignment_snp_sites.fa.treefile")
+midpoint.root(tree) -> tree
+
+kleborate %>% 
+  select(ST, strain) %>% 
+  pivot_wider(id_cols = strain ,
+              names_from = ST, 
+              values_from = ST,
+              values_fn = length,
+              values_fill = 0) %>% 
+  mutate(strain = gsub("#","_", strain)) %>% 
+  as.data.frame() -> 
+  mlst.onehot
+
+rownames(mlst.onehot) <- mlst.onehot$lane
+
+mlst.onehot[,c("strain", 
+               names(sort(apply(mlst.onehot[-1], 2, sum),
+                          decreasing = TRUE)))] -> mlst.onehot
+
+mlst.onehot[-1] <- lapply(mlst.onehot[-1], as.factor)
+rownames(mlst.onehot) <- mlst.onehot$strain
+
+kleborate %>% 
+  mutate(strain = gsub("#","_", strain)) %>% 
+  select(strain, species) %>% 
+  as.data.frame() ->
+  spec_hm
+rownames(spec_hm) <- spec_hm$strain
+
+get_legend(
+ggtree(tree) %>% 
+  gheatmap(
+    select(spec_hm, species), 
+    width = 0.05, 
+    color = NA, 
+    font.size = 3, 
+    colnames_angle = 90, 
+    colnames_position = "top", 
+    colnames_offset_y = 10,
+    offset = 0.006 ) + 
+  theme(legend.position = "bottom", legend.title = element_blank()) +
+  ylim(NA, 220) +
+  scale_fill_manual(values = viridis(n=5)[c(2:5,1)])
+) -> leg
+
+ggtree(tree) %>% 
+  gheatmap(
+    select(spec_hm, species) %>% 
+      rename(Species = species), 
+    width = 0.05, 
+    color = NA, 
+    font.size = 3, 
+    colnames_angle = 90, 
+    colnames_position = "top", 
+    colnames_offset_y = 10,
+    offset = 0.006 ) %>% 
+  gheatmap(
+    select(mlst.onehot,-strain),
+    width = 3, 
+    color = NA, 
+    font.size = 3, 
+    colnames_angle = 90, 
+    colnames_position = "top", 
+    colnames_offset_y = 10,
+    offset = 0.05 
+  ) +
+  theme(legend.position = "none") +
+  ylim(NA, 220) +
+  scale_fill_manual(values = c("lightgrey", "black", viridis(n=5)[c(2:5,1)])) +
+  geom_treescale(x = 0.05, y = 180, offset = 2) -> 
+  p1
+
+ggtree(treeio::tree_subset(tree, 210, levels_back = 0)) %>% 
+    gheatmap(
+        select(mlst.onehot,-strain),
+        width = 2, 
+        color = NA, 
+        font.size = 3, 
+        colnames_angle = 90, 
+        colnames_position = "top", 
+        colnames_offset_y = 10,
+        offset = 0
+    ) +  ylim(NA, 205) +
+    theme(legend.position = "none") +
+    scale_fill_manual(values = c("lightgrey", "black")) +
+  geom_treescale(x =0.002, y = 180, offset = 2) -> p2
+
+((p1 + labs(tag = "A")) / leg / (p2 + labs(tag = "B"))) + 
+  plot_layout(heights = c(1, 0.1,1)) -> dassim_trees
+  
+dassim_trees
+ggsave(filename = here("manuscript/kleb/figures/SUP_F_dassimtrees.svg"),
+       plot = dassim_trees,
+       width =14,
+       height = 16
+)
+
+```
+
+### AMR determinents
+
+```{r amr, fig.cap = "FIGURE X: Prevalence of AMR gene grouped by class", fig.height= 10, fig.width= 6}
+
+amr.ariba <- read_csv("~/Documents/Sanger/DASSIM3/data_processed/ariba/DASSIM3-ariba-report.csv")
+
+# get beta lactamase phenotype and tidy -------------------------------------
+
+bls <- read_tsv(
+  "https://ftp.ncbi.nlm.nih.gov/pathogen/betalactamases/Allele.tab"
+  )
+
+
+bls %>% 
+  rename_with(~ tolower(gsub(" ", "_", .x))) %>% 
+  rename_with(~ gsub("#", "", .x)) %>% 
+  mutate(allele_name = gsub("-", "_", allele_name),
+         class = case_when(
+           grepl("carbapenem-hydrolyzing", 
+                 curated_gene_product_name) ~ "CPE",
+           grepl("metallo-beta-lactamase", 
+                 curated_gene_product_name) ~ "CPE",
+           grepl("extended-spectrum beta-lactamase", 
+                 curated_gene_product_name) ~ "ESBL",
+           grepl("class C", 
+                 curated_gene_product_name) ~ "AmpC",
+           grepl("beta-lactamase", 
+                 curated_gene_product_name) ~ "Penicillinase"
+         )) -> 
+  bls
+
+# get the ariba SNP for QRDR calls and parse ---------------------------------
+
+read_tsv("~/Documents/Sanger/DASSIM3/data_processed/ariba/QNR/jl_arribasum.tsv") -> amr.qrdr
+
+names(amr.qrdr)[length(names(amr.qrdr))] <- "sample"
+subset(amr.qrdr, ref_name != "ref_name") -> amr.qrdr
+
+
+# rembember the weird and contam lanes are in this data - remove ------------
+
+include.lanes <- 
+  read_lines(
+    "~/Documents/Sanger/DASSIM3/data_processed/include_lanes/DASSIM3_lanes_retained_following_qc.txt"
+    )
+
+# tidy up - restrict to QRDR (includes whole genes)
+
+amr.qrdr %>% 
+  filter(sample %in% include.lanes) %>% 
+  mutate(codon_posn = str_extract(amr.qrdr$ref_ctg_change, "[0-9]+"),
+         codon_posn = as.numeric(codon_posn)) %>% 
+  filter(ref_ctg_effect == "NONSYN") ->
+  amr.qrdr
+
+# refs https://www.frontiersin.org/articles/10.3389/fmicb.2015.01355/full for
+# gyra and pac C
+# https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3299416/ gyrB
+
+
+amr.qrdr <- subset(amr.qrdr, 
+               (ref_name == "GyrA" & codon_posn >= 67 & codon_posn <= 106) |
+               (ref_name == "GyrB" & codon_posn >= 426 & codon_posn <= 464) |
+               (ref_name == "ParC" & codon_posn >= 56 & codon_posn <= 108) |
+               (ref_name == "ParE" & codon_posn >= 365 & codon_posn <= 525) )
+
+# make one hot coded df ----------------------------------------------------
+
+amr.qrdr %>% 
+  select(sample,ref_name) 
+
+
+# tidy up other df ----------------------------------------------------------
+# remember TEM-95 is misnames as TEM-1 
+
+amr.ariba %>% 
+  mutate(name = gsub("\\./", "", name),
+         name = gsub("/report.tsv", "", name)) %>% 
+  filter(name %in% include.lanes) %>% 
+  pivot_longer(-name, 
+               names_to= c( "cluster", ".value"), 
+               names_sep = "\\.") %>% 
+  mutate(gene = sapply(str_split(ref_seq, "__"), function(x) x[3])) %>% 
+  filter(match == "yes") %>% 
+  mutate(gene = case_when(
+    gene == "TEM_95" ~ "TEM_1",
+    TRUE ~ gene
+  )) %>% 
+  select(name, gene) %>% 
+  pivot_wider(names_from = gene, 
+              values_from = gene,
+              values_fn = length,
+              values_fill = 0) ->
+  amr.ariba
+
+
+
+#pheatmap(s[,-1])
+
+# add class ro which resistnce is conferred --------------------------------
+
+quinolone <- "Par|Gyr|Par|Qnr|Qep|Nor|GyrA|GyrB|ParC|ParE"
+tetracycline<- "Tet"
+sulphonamide <- "Sul"
+aminoglycoside <- "Str|Aad|Aac|Aph|Rmt|APH"
+streptothricin <- "Sat"
+macrolide <- "Mph|Mdf|Erm|Ere"
+fosfomycin <- "Fos"
+chloramphenicol <- "Cat|FloR|Cml"
+trimethoprim <- "Dfr"
+rifampicin <- "Arr"
+ESBL <- "SHV_12"
+penicillinase <- "OKP|SCO|LEN|LAP"
+
+amr.ariba %>% 
+  pivot_longer(-name, names_to = "gene") %>% 
+  bind_rows(
+    amr.qrdr %>% 
+      select(ref_name, sample) %>% 
+      unique() %>% 
+      dplyr::rename(
+        gene = ref_name,
+        name = sample
+      ) %>% 
+      mutate(value = 1) 
+  ) %>% 
+  filter(gene != "AmpH") %>% 
+  left_join(select(bls, allele_name, class),
+            by = c("gene" = "allele_name")) %>% 
+  mutate(class = case_when(
+    str_detect(gene, quinolone) ~ "Quinolone",
+    str_detect(gene, tetracycline) ~ "Tetracycline",
+    str_detect(gene, sulphonamide) ~ "Sulphonamide",
+    str_detect(gene, aminoglycoside) ~ "Aminoglycoside",
+    str_detect(gene, streptothricin) ~ "Streptothricin",
+    str_detect(gene, macrolide) ~ "Macrolide",
+    str_detect(gene, fosfomycin) ~ "Fosfomycin",
+    str_detect(gene, chloramphenicol) ~ "Chloramphenicol",
+    str_detect(gene, rifampicin) ~ "Rifampicin",
+    str_detect(gene,trimethoprim) ~ "Trimethoprim",
+    str_detect(gene,ESBL) ~ "ESBL",
+    str_detect(gene,penicillinase) ~ "Penicillinase",
+    TRUE ~ class
+  )) ->
+  amr.ariba.long
+
+
+
+## AMR
+
+### Overall prevalence
+
+
+amr.ariba.long %>% 
+  filter(value == 1) %>% 
+  filter(!is.na(class)) %>% 
+  group_by(class) %>% 
+  mutate(n_class = length(class),
+         n_genes_in_class = n_distinct(gene)) %>% 
+  select(class, n_class,n_genes_in_class) %>% 
+  unique() %>% 
+  arrange(n_class) %>% 
+  ungroup() %>% 
+  mutate(end = cumsum(n_genes_in_class),
+         start = lag(end, default = 0),
+         textpos = start+ 0.5*(end-start)) -> annotate.df
+
+amr.ariba.long %>% 
+  filter(value == 1) %>% 
+  filter(!is.na(class)) %>% 
+  group_by(class) %>% 
+  mutate(n_class = length(class),
+         n_genes_in_class = n_distinct(gene),
+         gene = gsub("_", "-", gene)) %>% 
+ggplot( aes(fct_reorder(fct_rev(fct_infreq(gene)), n_class), 
+            fill = class)) + 
+  geom_bar() +
+  theme_bw() +
+  coord_flip(ylim = c(-5,200),clip = "off", expand = FALSE) +
+  annotate(geom = "segment",
+             x = annotate.df$start +0.5+0.2, 
+             xend = annotate.df$end +0.5-0.2, 
+             y = -60, yend = -60 ) +
+  annotate(geom = "text", y = -70,
+           x = annotate.df$textpos,
+           label = annotate.df$class, 
+           size = 3, 
+           hjust = 1) +
+  labs(y = "Number") + 
+  theme(plot.margin = unit(c(0.2,0.5,0.2,4), "cm"),
+        axis.title.y  = element_blank(),
+        legend.position = "none") -> amrplot
+amrplot
+ggsave(filename = here("manuscript/kleb/figures/F2_amr_plot.svg"),plot = amrplot,
+       width =6,
+       height = 10
+)
+
+```
+
+# Diversity of Malawian carriage isolates in a global context
+
+``` {r global-tree, fig.height = 12, fig.width = 8}
+
+# load and clean global AMR - aim: ESBL vs not
+
+glob_tree <- 
+  read.tree(
+    "~/Documents/Sanger/DASSIM3//data_processed/context_genomes_global//trees/core_gene_alignment_snp_sites.fa.treefile")
+midpoint.root(glob_tree) -> glob_tree
+
+amr.global <- read_csv(here("data_raw/ariba_srst2_global_summary.csv"))
+
+amr.global %>% 
+  mutate(name = gsub("\\./", "", name),
+         name = gsub("/report.tsv", "", name)) %>% 
+  pivot_longer(-name, 
+               names_to= c( "cluster", ".value"), 
+               names_sep = "\\.") %>% 
+  mutate(gene = sapply(str_split(ref_seq, "__"), function(x) x[3])) %>% 
+  filter(match == "yes") %>% 
+  mutate(gene = case_when(
+    gene == "TEM_95" ~ "TEM_1",
+    TRUE ~ gene
+  )) %>% 
+  select(name, gene) %>% 
+  pivot_wider(names_from = gene, 
+              values_from = gene,
+              values_fn = length,
+              values_fill = 0) ->
+  amr.global
+
+amr.global %>% 
+  pivot_longer(-name, names_to = "gene") %>% 
+      filter(value == 1)  %>% 
+  left_join(select(bls, allele_name, class),
+            by = c("gene" = "allele_name")) %>% 
+  mutate(class = case_when(
+    gene == "SHV_12" ~ "ESBL",
+    TRUE ~ class)
+    ) %>% 
+  group_by(name) %>% 
+  summarise(ESBL = 
+              case_when(
+                any(class == "ESBL") ~ "ESBL",
+                TRUE ~ "0"
+              )
+  ) -> metadata_global
+
+# merge in other data
+
+
+musicha <- read_lines("~/Documents/Sanger/DASSIM3/data_processed/context_genomes/musicha_klebs_list.txt")
+cornick <- read_lines("~/Documents/Sanger/DASSIM3/data_processed/context_genomes/chathinka_kleb_lanes.txt")
+global <- read_lines("~/Documents/Sanger/DASSIM3/data_processed/context_genomes_global/global_context_lanes.txt")
+kenya <- read_lines("~/Documents/Sanger/DASSIM3/data_processed/context_genomes_global/kenya_lanes.txt")
+
+
+metadata_global %>% 
+  mutate(study = 
+           case_when(
+            name %in% musicha ~ "musciha",
+            name %in% cornick ~ "cornick",
+            name %in% kenya ~ "kenya",
+            name %in% global ~ "global",
+            TRUE ~ "DASSIM"
+           )) -> metadata_global
+
+holt_metadata <- read_csv(here("data_raw/holt_global_kleb_metadata.csv"))
+
+holt_metadata %>% 
+  filter(!grepl("Kleb", File_ID)) %>% 
+  mutate(Infection_status =
+           case_when(Source_Host == "Human" &
+                       is.na(Infection_status) &
+                       Sample_note %in% c(
+                         "blood", 
+                         "sputum", 
+                         "urine",
+                         "pus",
+                         "bronchial alveolar lavage") ~ "Human_invasive",
+                     Source_Host == "Human" &
+                       is.na(Infection_status) &
+                       Clinical_note == "Carriage" ~ "Human_carriage",
+                     Source_Host == "Human" &
+                       is.na(Infection_status) ~ "Unknown",
+                     TRUE ~ Infection_status),
+         sample_source = case_when(
+         Source_Host == "Environmental" ~ "Environmental",
+         Source_Host != "Human" ~ "Animal",
+         TRUE ~ "Human"),
+         isolate_type = case_when(
+           Source_Host == "Human" &
+           Infection_status == "Human_carriage" ~ "Carriage",
+           Source_Host == "Human" & 
+           Infection_status %in% c(
+           "Human_infection",
+           "Human_invasive") ~ "Infection",
+         Source_Host == "Human"  ~ NA_character_,
+         TRUE ~ NA_character_)) ->holt_metadata
+
+musicha_metadata <- read_csv(here("data_raw/musciha_sample_metadata.csv"))
+
+musicha_metadata %>% 
+  mutate(sample_source = "Human",
+         isolate_type = case_when(
+           Source == "RS" ~ "Carriage",
+           TRUE~ "Infection")) -> musicha_metadata
+
+left_join(
+  metadata_global %>% 
+    mutate(name = gsub("#","_", name)),
+  bind_rows(
+    select(holt_metadata, File_ID,sample_source,isolate_type),
+    select(musicha_metadata, File_ID,sample_source,isolate_type)
+  ) %>% 
+    mutate(File_ID = gsub("#","_", File_ID)),
+  by = c("name" = "File_ID")) %>% 
+  mutate(location =
+           case_when(study %in% c(
+             "musciha",
+             "cornick",
+             "DASSIM") ~ "Malawi",
+             study == "kenya" ~ "Kenya",
+             TRUE ~ "Global"),
+         isolate_type = 
+           case_when(
+             study %in% c("musicha","cornick", "kenya") ~ "Infection",
+             study == "DASSIM" ~ "Carriage",
+             TRUE ~ isolate_type),
+         sample_source = case_when(
+             study %in% c("musicha","cornick", "DASSIM","kenya") ~ "Human",
+             TRUE ~ sample_source)
+         ) %>% 
+  rename("Sample Source" = sample_source,
+         "Isolate Type" = isolate_type) ->
+  metadata_global
+
+metadata_global %>% 
+  left_join(
+  bind_rows(
+    select(
+      kleborate,
+      strain,
+      YbST,
+      CbST,
+      AbST,
+      SmST,
+      rmpA,
+      rmpA2,
+      O_locus,
+      K_locus,
+      type),
+    select(
+      kleborate2,
+      strain,
+      YbST,
+      CbST,
+      AbST,
+      SmST,
+      rmpA,
+      rmpA2,
+      O_locus,
+      K_locus,
+      type)) %>% 
+    transmute(name = gsub("#","_", strain),
+              ybt = if_else(YbST != 0,1,0),
+              clb = if_else(CbST != 0, 1,0),
+              iuc = if_else(AbST != 0,1,0),
+              iro = if_else(SmST != 0,1,0),
+              rmpA = if_else(rmpA != "-",1,0),
+              rmpA2 = if_else(rmpA2 != "-",1,0)
+    ),
+  by = "name") -> metadata_global
+              
+
+metadata_global <- as.data.frame(metadata_global)
+rownames(metadata_global) <- metadata_global$name
+metadata_global$Malawi <- ifelse(metadata_global$location == "Malawi","1","0")
+
+metadata_global$ESBL <- as.character(metadata_global$ESBL)
+
+
+col <-
+  c("white",
+    "grey30",
+    brewer_pal(palette = "Set3")(6))
+names(col) <-
+  c("0",
+    "1",
+    "Human",
+    "Animal",
+    "Environmental",
+    "Infection",
+    "Carriage",
+    "ESBL") 
+
+get_legend(
+  ggtree(glob_tree) %>%
+    gheatmap(
+      select(metadata_global, `Sample Source`),
+      width = 0.05,
+      color = NA,
+      font.size = 4,
+      colnames_angle = 90,
+      colnames_position = "top",
+      colnames_offset_y = 5,
+      hjust = 0,
+      offset = 0.0015
+    ) +
+    scale_fill_manual(values = col, na.translate = FALSE) +
+    theme(legend.title = element_blank())
+) -> leg1
+
+get_legend(
+  ggtree(glob_tree) %>%
+    gheatmap(
+      select(metadata_global, `Isolate Type`),
+      width = 0.05,
+      color = NA,
+      font.size = 4,
+      colnames_angle = 90,
+      colnames_position = "top",
+      colnames_offset_y = 5,
+      hjust = 0,
+      offset = 0.0015
+    ) +
+    scale_fill_manual(values = col, na.translate = FALSE) +
+    theme(legend.title = element_blank())
+) -> leg2
+  
+get_legend(
+metadata_global %>% 
+  mutate(ESBL = if_else(ESBL != "ESBL", NA_character_, ESBL)) %>% 
+  ggplot(aes(ESBL, fill = ESBL)) + geom_bar() +
+  scale_fill_manual(values = col, na.translate = FALSE) +
+  theme(legend.title = element_blank())
+  ) -> leg3
+
+get_legend(
+metadata_global %>% 
+  mutate(ybt = if_else(ybt == "0", NA_character_, "Gene\nPresent")) %>% 
+  ggplot(aes(ybt, fill = ybt)) + geom_bar() +
+  scale_fill_manual(values = "grey30", na.translate = FALSE) +
+  theme(legend.title = element_blank())
+  ) -> leg4
+
+ggtree(treeio::tree_subset(glob_tree, 734, levels_back = 0), size = 0.3) %>%
+  gheatmap(
+    select(metadata_global, Malawi),
+    width = 0.03,
+    color = NA,
+    font.size = 4,
+    colnames_angle = 90,
+    colnames_position = "top",
+    colnames_offset_y = 5,
+    hjust = 0
+  ) %>%
+  gheatmap(
+    select(metadata_global, `Sample Source`),
+    width = 0.03,
+    color = NA,
+    font.size = 4,
+    colnames_angle = 90,
+    colnames_position = "top",
+    colnames_offset_y = 5,
+    hjust = 0,
+    offset = 0.0007
+  ) %>%
+  gheatmap(
+    select(metadata_global, `Isolate Type`),
+    width = 0.03,
+    color = NA,
+    font.size = 4,
+    colnames_angle = 90,
+    colnames_position = "top",
+    colnames_offset_y = 5,
+    hjust = 0,
+    offset = 0.0014
+  ) %>%   gheatmap(
+    select(metadata_global, ESBL),
+    width = 0.03,
+    color = NA,
+    font.size = 4,
+    colnames_angle = 90,
+    colnames_position = "top",
+    colnames_offset_y = 5,
+    hjust = 0,
+    offset = 0.0021
+  ) +
+  ylim(NA, 680) +
+  scale_fill_manual(values = col) +
+  geom_cladelabel(
+    node = 784,
+    label = "ST14",
+    align = TRUE,
+    offset = -0.002
+  ) +
+  geom_cladelabel(
+    node = 827,
+    label = "ST15",
+    align = TRUE,
+    offset = -0.002
+  ) +
+  geom_cladelabel(
+    node = 1020,
+    label = "ST340",
+    align = TRUE,
+    offset = -0.002
+  ) +
+  geom_cladelabel(
+    node = 1067,
+    label = "ST307",
+    align = TRUE,
+    offset = -0.002
+  ) +
+  theme(legend.position = "none") +
+  geom_treescale(x = 0.001, y = 550, offset = 5) ->
+  treeplot
+  
+treeplot +
+  ggarrange(NULL,leg1, leg2, leg3, NULL, ncol = 1, heights = c(1,0.3,0.3,0.3,1)) + 
+  plot_layout(widths = c(5,1)) -> globaltree_plot
+
+globaltree_plot  
+ggsave(filename = here("manuscript/kleb/figures/F3_globaltree.svg"),
+       plot = globaltree_plot,
+       width =8,
+       height = 12
+)
+```
+
+### Malawian isoaltes: carriage vs infection
+
+
+```{r malawitree, fig.height = 10, fig.width = 8, fig.cap = "Midpoint rooted core gene maximum likelihood phylogenetic tree of Malawian isolates."}
+
+ ST14tree <- read.tree("~/Documents/Sanger/DASSIM3/data_processed/ST14/ST14_mapping_alignment.filtered_polymorphic_sites.fasta.treefile")
+ST14tree <- midpoint.root(ST14tree)
+gsub(".bam.sorted.bcf.called.bcf.gz","", ST14tree$tip.label) -> ST14tree$tip.label
+gsub(".bam.bcf.called.bcf.gz","", ST14tree$tip.label)-> ST14tree$tip.label
+
+ST340tree <- read.tree("~/Documents/Sanger/DASSIM3/data_processed/ST340/consensus.filtered_polymorphic_sites.fasta.treefile")
+ST340tree <- midpoint.root(ST340tree)
+gsub("\\..*","", ST340tree$tip.label) -> ST340tree$tip.label
+
+ST307tree <- read.tree("~/Documents/Sanger/DASSIM3/data_processed/ST307/ST307_mapped_alignment.filtered_polymorphic_sites.fasta.treefile")
+ST307tree <- midpoint.root(ST307tree)
+gsub(".bam","", ST307tree$tip.label) -> ST307tree$tip.label
+
+malawitree <- 
+  read.tree(
+    "~/Documents/Sanger/DASSIM3//data_processed/context_genomes/trees/core_gene_alignment_snp_sites.fa.treefile")
+midpoint.root(malawitree) -> malawitree
+
+metadata_global %>% 
+  mutate(across(everything(), as.character)) %>% 
+  as.data.frame() -> metadata_global
+
+rownames(metadata_global) <- metadata_global$name
+
+
+
+
+# 627  = ST 218
+
+ggtree(treeio::tree_subset(malawitree, 372, levels_back = 0)) %>%
+
+  gheatmap(
+    select(metadata_global, `Isolate Type`),
+    width = 0.03,
+    color = NA,
+    font.size = 4,
+    colnames_angle = 90,
+    colnames_position = "top",
+    colnames_offset_y = 5,
+    hjust = 0,
+    offset = 0.001
+  ) %>%   gheatmap(
+    select(metadata_global, ESBL),
+    width = 0.03,
+    color = NA,
+    font.size = 4,
+    colnames_angle = 90,
+    colnames_position = "top",
+    colnames_offset_y = 5,
+    hjust = 0,
+    offset = 0
+  )%>%   gheatmap(
+    select(metadata_global, ybt,clb,iuc,iro,rmpA,rmpA2),
+    width = 0.18,
+    color = "black",
+    font.size = 4,
+    colnames_angle = 90,
+    colnames_position = "top",
+    colnames_offset_y = 5,
+    hjust = 0,
+    offset = 0.002
+  )  + 
+  scale_fill_manual(values = col) + ylim(NA, 370) +
+  geom_cladelabel(node = 599, label = "ST268", align = TRUE, offset = - 0.003) +
+  geom_cladelabel(node = 582, label = "ST218", align = TRUE, offset = - 0.003) +
+  geom_cladelabel(node = 377, label = "ST14", align = TRUE, offset = - 0.003) +
+  geom_cladelabel(node = 413, label = "ST15", align = TRUE, offset = - 0.003) +
+  geom_cladelabel(node = 531, label = "ST340", align = TRUE, offset = - 0.003) +
+  geom_cladelabel(node = 607, label = "ST307", align = TRUE, offset = - 0.003) +
+  theme(legend.position = "none") +
+  geom_treescale() +
+    geom_treescale(x = 0.001, y = 280, offset = 2) -> malawi_tree_plot
+
+malawi_tree_plot +
+  ggarrange(NULL,leg3,leg2,leg4, NULL, ncol = 1, heights = c(1,0.2,0.4,0.2,1)) + 
+  plot_layout(widths = c(5,1)) -> malawi_tree_plot_final
+
+malawi_tree_plot_final
+
+ggsave(filename = here("manuscript/kleb/figures/F4_malawitree.svg"),
+       plot = malawi_tree_plot_final,
+       width =8,
+       height = 10
+)
+
+
+```
+
+```{r inv_vs_carriage}
+
+metadata_global %>% 
+  filter(location == "Malawi") %>% 
+  mutate(ESBL = if_else(ESBL== "ESBL","ESBL","Not ESBL")) %>% 
+  select(`Isolate Type`, ESBL, ybt,clb,iuc,iro,rmpA, rmpA2) %>% 
+  pivot_longer(-c(`Isolate Type`, ESBL)) %>% 
+  mutate(value = if_else(value == 1, "Present", "Absent")) %>% 
+  ggplot(aes(name, fill = value)) + geom_bar(position = "fill") +
+  facet_grid(~`Isolate Type`) +
+  theme_bw() +
+  scale_fill_viridis_d() + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1),
+        legend.title = element_blank()) +
+  labs(y = "Proportion", x = "")-> a
+
+metadata_global %>% 
+  filter(location == "Malawi") %>% 
+  mutate(ESBL = if_else(ESBL== "ESBL","ESBL","Not ESBL")) %>% 
+  select(`Isolate Type`, ESBL, ybt,clb,iuc,iro,rmpA, rmpA2) %>% 
+  pivot_longer(-c(`Isolate Type`, ESBL)) %>% 
+  mutate(value = if_else(value == 1, "Present", "Absent")) %>% 
+  ggplot(aes(name, fill = value)) + geom_bar(position = "fill") +
+  facet_grid(~ESBL) +
+  theme_bw() +
+  scale_fill_viridis_d() + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1),
+        legend.title = element_blank()) +
+  labs(y = "Proportion", x = "") -> b
+
+(a / b) + 
+  plot_layout(guides = "collect") + 
+  plot_annotation(tag_levels = "A") -> virplot
+virplot
+
+ggsave(filename = here("manuscript/kleb/figures/SUPP_FIG_virplot.svg"),
+       plot = virplot,
+       width =5,
+       height = 5
+)
+
+```
+
+```{r odds-and-ends}
+length(unique(kleborate$ST))
+
+kleborate %>% 
+  group_by(ST) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  summarise(median = median(n),
+            lqi = quantile(n, 0.25),
+            uqi = quantile(n, 0.75),
+            n_singletons = sum(n==1))
+
+length(unique(kleborate$K_locus))
+
+kleborate %>% 
+  group_by(K_locus) %>% 
+  summarise(n = length(unique(ST))) %>% 
+  ungroup() %>% 
+  summarise(median = median(n),
+            lqi = quantile(n, 0.25),
+            uqi = quantile(n, 0.75))
+
+length(unique(kleborate$O_locus))
+
+kleborate %>% 
+  group_by(O_locus) %>% 
+  summarise(n = length(unique(ST))) %>% 
+  ungroup() %>% 
+  summarise(median = median(n),
+            lqi = quantile(n, 0.25),
+            uqi = quantile(n, 0.75))
+
+
+
+amr.ariba.long %>% 
+  group_by(name, class) %>%
+  mutate(present = any(value == 1)) %>%
+  ungroup() %>%  
+  select(name, class, present) %>% 
+  unique() %>% 
+  filter(!is.na(class)) %>% 
+  group_by(class) %>% 
+  summarise(n = sum(present), prop = n /203)
+
+
+metadata_global %>%
+    filter(location == "Malawi") %>%
+    mutate(ESBL = if_else(ESBL == "ESBL", "ESBL", "Not ESBL")) %>%
+    select(ybt, clb, iuc, iro, rmpA, rmpA2) %>%
+    summarise(across(everything(), ~ sum(as.numeric(.x))))
+
+# virulence by carriage vs infection
+
+metadata_global %>%
+  filter(location == "Malawi") %>%
+  mutate(ESBL = if_else(ESBL == "ESBL", "ESBL", "Not ESBL")) %>%
+  select(`Isolate Type`, ybt, clb, iuc, iro, rmpA, rmpA2) %>%
+  group_by(`Isolate Type`) %>%  
+  summarise(across(everything(), ~ sum(as.numeric(.x))))
+
+metadata_global %>%
+  filter(location == "Malawi") %>%
+  group_by(`Isolate Type`) %>% 
+  tally()
+
+metadata_global %>%
+  filter(location == "Malawi") %>%
+  group_by(ESBL) %>% 
+  tally()
+
+metadata_global %>%
+  filter(location == "Malawi") %>%
+  mutate(ESBL = if_else(ESBL == "ESBL", "ESBL", "Not ESBL")) %>%
+  select(ESBL, ybt, clb, iuc, iro, rmpA, rmpA2) %>%
+  group_by(ESBL) %>%  
+  summarise(across(everything(), ~ sum(as.numeric(.x))))
+
+kleborate2 %>% 
+  mutate(study = 
+           case_when(
+            strain %in% musicha ~ "musciha",
+            strain %in% cornick ~ "cornick",
+            strain %in% kenya ~ "kenya",
+            strain %in% global ~ "global",
+            TRUE ~ "DASSIM"
+           )) %>% 
+  filter(ST %in% c("ST218", "ST268"))
+
+metadata_global %>%  
+  left_join(select(kleborate2, strain, ST) %>% 
+              mutate(strain = gsub("#","_",strain)), 
+                     by = c("name" = "strain")) %>% 
+              filter(location == "Malawi") %>%  
+  mutate(vir = clb == 1 |
+           iuc == 1 | iro == 1 | rmpA == 1 | rmpA2 == 1) %>%  
+              filter(ESBL == "ESBL" & vir == TRUE)
+
+```
