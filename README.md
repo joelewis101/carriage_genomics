@@ -1,5 +1,4 @@
-# blantyreSepsis
-
+# carriage_genomics.Rproj
 
 Data and code to replicate the analysis of the manuscript:
 
