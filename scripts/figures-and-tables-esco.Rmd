@@ -305,5 +305,458 @@ ggsave(filename = here("manuscript/esco/figures/FIG_2_amr_plot.svg"),plot = amrp
 
 ```
 
+### Global phylogeny
+
+```{r global_phylogeny}
 
 
+
+
+```
+
+### ST167 tree
+
+```{r st167 tree, fig.width= 10, fig.height=9}
+
+st167_metadata <- read_tsv(here("data_raw/e_coli/st167.tsv"))
+
+
+
+st167_metadata %>%
+  select(
+    Uberstrain,
+    Name,
+    `Data Source(Accession No.;Sequencing Platform;Sequencing Library;Insert Size;Experiment;Status)`,
+    `Source Niche`,
+    `Source Details`,
+    Country,
+    `Collection Year`,
+    ST
+  ) %>%  separate_rows(
+    `Data Source(Accession No.;Sequencing Platform;Sequencing Library;Insert Size;Experiment;Status)`,
+    sep = ","
+  ) %>%
+  separate(
+    `Data Source(Accession No.;Sequencing Platform;Sequencing Library;Insert Size;Experiment;Status)`,
+    into = c(
+      "accession",
+      "platform",
+      "library",
+      "insert_size",
+      "experiment"
+    ),
+    sep = ";"
+  ) ->
+  st167_metadata
+
+
+read.tree(here("data_processed/esco/st167/iqtree/clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta.treefile")) -> st167_tree
+
+midpoint.root(st167_tree) -> st167_tree
+
+st167_tree$tip.label <- gsub("_filtered","", st167_tree$tip.label)
+
+st167_metadata %>% 
+  filter(platform == "ILLUMINA") %>% 
+  filter(accession %in% st167_tree$tip.label) %>% 
+  bind_rows(
+    btESBL_sequence_sample_metadata %>% 
+      filter(lane %in% st167_tree$tip.label) %>% 
+      transmute(accession = lane,
+                `Collection Year` = year(data_date),
+                `Source Niche` = "Human",
+                Country = "Malawi")
+  ) %>% 
+  rename(Year = `Collection Year`) %>% 
+  as.data.frame() -> st167_metadata
+
+st167_metadata$malawi <- st167_metadata$Country == "Malawi"
+
+st167_metadata$Continent <- 
+  countrycode(
+    sourcevar = st167_metadata$Country,
+    origin = "country.name",
+    destination = "un.region.name"
+  )
+
+rownames(st167_metadata) <- st167_metadata$accession
+
+
+amr.ariba <- read_csv(here("data_processed/esco/st167/ariba/st167_ariba_srst2_summary.csv"))
+
+amr.ariba %>% 
+  mutate(name = gsub("\\./", "", name),
+         name = gsub("/report.tsv", "", name),
+         name = gsub("_filtered", "", name),
+         name = gsub("#","_", name)) %>% 
+  pivot_longer(-name, 
+               names_to= c( "cluster", ".value"), 
+               names_sep = "\\.") %>% 
+  mutate(gene = sapply(str_split(ref_seq, "__"), function(x) x[3])) %>% 
+  filter(match == "yes") %>% 
+  mutate(gene = case_when(
+    gene == "TEM_95" ~ "TEM_1",
+    TRUE ~ gene
+  )) %>% 
+  select(name, gene) %>% 
+  pivot_wider(names_from = gene, 
+              values_from = gene,
+              values_fn = length,
+              values_fill = 0) %>%
+  mutate(across(everything(), as.character)) %>% 
+  as.data.frame() ->
+  amr.ariba
+
+rownames(amr.ariba) <- amr.ariba$name
+
+
+
+amr.ariba %>% 
+  rename(sample = name) %>% 
+  pivot_longer(-sample) %>% 
+  filter(value == 1) %>% 
+  left_join(
+    select(bls, allele_name, class),
+    by = c("name" = "allele_name")
+  ) %>%  
+  mutate(class = case_when(
+    grepl("CMY", name) ~ "ESBL/AmpC",
+    class == "ESBL" ~ "ESBL/AmpC",
+    TRUE ~ class
+        )) %>% 
+  filter(class %in% c("ESBL/AmpC", "Carbapenemase") & value == 1) %>%
+  mutate(name = gsub("_", "-", name)) %>% 
+  arrange(class, fct_infreq(name)) %>% 
+  pivot_wider(id_cols = "sample",
+              names_from = name,
+              values_from = class) %>% 
+  as.data.frame() %>% 
+  select(-`TEM-15`) ->    # not in df?
+  esbl_cpe.ariba
+
+rownames(esbl_cpe.ariba) <- esbl_cpe.ariba$sample
+
+(
+(ggtree(treeio::tree_subset (st167_tree, 320, levels_back = 0)) %<+% (select(st167_metadata, accession, Country) %>% mutate(Country = if_else(Country == "Malawi", "Malawi",NA_character_)))  %>%
+    gheatmap(
+      select(st167_metadata, `Year`),
+      font.size = 4,
+      width = 0.03,
+      colnames_position = "top",
+      color = NA,
+      colnames_offset_y = 5,
+      colnames_angle = 90,
+      hjust = 0
+    )  + 
+    scale_fill_viridis(name = "Year") +
+    new_scale_fill()) %>% 
+  gheatmap(
+    select(st167_metadata, Continent),
+    font.size = 4,
+    width = 0.03,
+    colnames_position = "top",
+    color = NA,
+    colnames_offset_y = 5,
+    colnames_angle = 90,
+    offset = 0.00003,
+    hjust = 0
+  ) + 
+  scale_fill_viridis_d(option = "plasma", name = "Continent") + 
+  geom_tippoint(aes(color = Country), na.rm = TRUE, size = 0.5) + 
+  scale_color_manual(values  = "red", na.translate = FALSE) +
+    new_scale_fill() 
+) %>% 
+  gheatmap(
+  select(esbl_cpe.ariba, -sample),
+  font.size = 3,
+  width = 0.5,
+  colnames_position = "top",
+  color = NA,
+  colnames_offset_y = 5,
+  colnames_angle = 90,
+  offset = 0.00006,
+  hjust = 0
+) + scale_fill_manual(values = viridis_pal(option = "magma")(5)[c(2,3)],
+                      na.translate = FALSE,
+                      name = "Beta-\nlactamase") +
+  ylim(NA, 350) +
+  geom_treescale(x = 0.0002, y = 250, offset = 2) -> st167_globaltree_plot
+
+st167_globaltree_plot
+
+ggsave(here("manuscript/esco/figures/FIG_4_st167_treeplot.svg"),
+       st167_globaltree_plot, width = 9, height = 10)
+
+```
+
+### ST410 trees
+
+```{r st410 tree, fig.height = 10, fig.width = 12}
+
+
+st410_metadata <- read_tsv(here("data_raw/e_coli/st410.tsv"))
+
+
+
+st410_metadata %>%
+  select(
+    Uberstrain,
+    Name,
+    `Data Source(Accession No.;Sequencing Platform;Sequencing Library;Insert Size;Experiment;Status)`,
+    `Source Niche`,
+    `Source Details`,
+    Country,
+    `Collection Year`,
+    ST
+  ) %>%  separate_rows(
+    `Data Source(Accession No.;Sequencing Platform;Sequencing Library;Insert Size;Experiment;Status)`,
+    sep = ","
+  ) %>%
+  separate(
+    `Data Source(Accession No.;Sequencing Platform;Sequencing Library;Insert Size;Experiment;Status)`,
+    into = c(
+      "accession",
+      "platform",
+      "library",
+      "insert_size",
+      "experiment"
+    ),
+    sep = ";"
+  ) ->
+  st410_metadata
+
+
+
+read.tree(here("data_processed/esco/st410/iqtree/clean_full.filtered_pollymorphic_sites.ref_removed.snpsites.fasta.treefile")) -> st410_tree
+
+midpoint.root(st410_tree) -> st410_tree
+
+#ggtree(treeio::tree_subset (st410_tree, 1083, levels_back = 0)) + geom_treescale()
+
+st410_tree$tip.label <- gsub("_filtered","", st410_tree$tip.label)
+
+st410_metadata %>% 
+  filter(platform == "ILLUMINA") %>% 
+  filter(accession %in% st410_tree$tip.label) %>% 
+  bind_rows(
+    btESBL_sequence_sample_metadata %>% 
+      filter(lane %in% st410_tree$tip.label) %>% 
+      transmute(accession = lane,
+                `Collection Year` = year(data_date),
+                `Source Niche` = "Human",
+                Country = "Malawi")
+  ) %>% 
+  rename(
+    Year = `Collection Year`) %>% 
+  as.data.frame() -> st410_metadata
+
+st410_metadata$malawi <- st410_metadata$Country == "Malawi"
+
+
+st410_metadata$Continent <- 
+  countrycode(
+    sourcevar = st410_metadata$Country,
+    origin = "country.name",
+    destination = "un.region.name"
+  )
+
+rownames(st410_metadata) <- st410_metadata$accession
+
+amr.ariba410 <- read_csv(here("data_processed/esco/st410/ariba/st410_ariba_srst2_summary.csv"))
+
+amr.ariba410 %>% 
+  mutate(name = gsub("\\./", "", name),
+         name = gsub("/report.tsv", "", name),
+         name = gsub("_filtered", "", name),
+         name = gsub("#","_", name)) %>% 
+  pivot_longer(-name, 
+               names_to= c( "cluster", ".value"), 
+               names_sep = "\\.") %>% 
+  mutate(gene = sapply(str_split(ref_seq, "__"), function(x) x[3])) %>% 
+  filter(match == "yes") %>% 
+  mutate(gene = case_when(
+    gene == "TEM_95" ~ "TEM_1",
+    TRUE ~ gene
+  )) %>% 
+  select(name, gene) %>% 
+  pivot_wider(names_from = gene, 
+              values_from = gene,
+              values_fn = length,
+              values_fill = 0) %>%
+  mutate(across(everything(), as.character)) %>% 
+  as.data.frame() ->
+  amr.ariba410
+
+rownames(amr.ariba410) <- amr.ariba410$name
+
+
+
+
+amr.ariba410 %>% 
+  rename(sample = name) %>% 
+  pivot_longer(-sample) %>% 
+  filter(value == 1) %>% 
+  left_join(
+    select(bls, allele_name, class),
+    by = c("name" = "allele_name")
+  ) %>% mutate(class = case_when(
+    grepl("CMY", name) ~ "ESBL/AmpC",
+    class == "ESBL" ~ "ESBL/AmpC",
+    TRUE ~ class
+        )) %>% 
+  filter(class %in% c("ESBL/AmpC", "Carbapenemase") & value == 1) %>%
+  mutate(name = gsub("_", "-", name)) %>% 
+  arrange(class, fct_infreq(name)) %>% 
+  pivot_wider(id_cols = "sample",
+              names_from = name,
+              values_from = class) %>% 
+  as.data.frame() -> 
+#  select(-`TEM-15`) ->    # not in df?
+  esbl_cpe.ariba410
+
+rownames(esbl_cpe.ariba410) <- esbl_cpe.ariba410$sample
+
+(  
+  (ggtree(treeio::tree_subset (st410_tree, 1083, levels_back = 0)) %<+% (select(st410_metadata, accession, Country) %>% mutate(Country = if_else(Country == "Malawi", "Malawi",NA_character_)))  %>%
+     gheatmap(
+       select(st410_metadata, `Year`),
+       font.size = 4,
+       width = 0.03,
+       colnames_position = "top",
+       color = NA,
+       colnames_offset_y = 5,
+       colnames_angle = 90,
+       hjust = 0
+     )  + 
+     scale_fill_viridis(name = "Year") +
+     new_scale_fill()) %>% 
+  gheatmap(
+    select(st410_metadata, Continent),
+    font.size = 4,
+    width = 0.03,
+    colnames_position = "top",
+    color = NA,
+    colnames_offset_y = 5,
+    colnames_angle = 90,
+    offset = 0.00015,
+    hjust = 0
+  ) + 
+  scale_fill_viridis_d(option = "plasma", name = "Continent") + 
+  geom_tippoint(aes(color = Country), na.rm = TRUE, size = 0.5) + 
+  scale_color_manual(values  = "red", na.translate = FALSE) +
+  new_scale_fill() 
+) %>% 
+  gheatmap(
+    select(esbl_cpe.ariba410, -sample),
+    font.size = 3,
+    width = 0.5,
+    colnames_position = "top",
+    color = NA,
+    colnames_offset_y = 5,
+    colnames_angle = 90,
+    offset = 0.0003,
+    hjust = 0
+  ) + scale_fill_manual(values = viridis_pal(option = "magma")(5)[c(2,3)],
+                        na.translate = FALSE,
+                        name = "Beta-\nlactamase") +
+  ylim(NA, 600) +
+  geom_treescale(x = 0.0002, y = 250, offset = 5) +
+   geom_highlight(aes(node = 568) ,alpha = 0.3) +
+  geom_cladelabel(
+    node = 568,
+    label = "B4/H24RxC",
+    angle = 90,
+    offset = -0.0006,
+    offset.text = -0.00009,
+    barsize = 0,
+    hjust = 0.5,
+    fontsize = 3,
+    color = "steelblue"
+  )  -> st410_globaltree_plot
+
+ggsave(here("manuscript/esco/figures/FIG_5_st410_treeplot.svg"),
+       st410_globaltree_plot, width = 12, height = 10)
+
+st410_globaltree_plot
+
+```
+
+
+
+```{r st410 subtree, fig.width = 7, fig.height = 6}
+treeio::tree_subset (st410_tree, 564, levels_back = 0) -> st410_subtree
+
+esbl_cpe.ariba410 %>%  
+  subset(sample %in% st410_subtree$tip.label) %>% 
+  as.data.frame() ->
+  esbl_cpe.ariba410_subset
+  
+  esbl_cpe.ariba410_subset[
+    c(TRUE, apply(esbl_cpe.ariba410_subset[-1], 2,function(x) !all(is.na(x))))] ->
+    esbl_cpe.ariba410_subset
+
+  (  
+  (ggtree(treeio::tree_subset (st410_tree, 564, levels_back = 0)) %<+% (select(st410_metadata, accession, Country) %>% mutate(Country = if_else(Country == "Malawi", "Malawi",NA_character_)))  %>%
+     gheatmap(
+       select(st410_metadata, `Year`),
+       font.size = 4,
+       width = 0.05,
+       colnames_position = "top",
+       color = NA,
+       colnames_offset_y = 5,
+       colnames_angle = 90,
+       hjust = 0
+     )  + 
+     scale_fill_viridis(name = "Year", limits = c(1975,2020)) +
+     new_scale_fill()) %>% 
+    gheatmap(
+      select(st410_metadata, Continent),
+      font.size = 4,
+      width = 0.05,
+      colnames_position = "top",
+      color = NA,
+      colnames_offset_y = 5,
+      colnames_angle = 90,
+      offset = 0.00003,
+      hjust = 0
+    ) + 
+    scale_fill_viridis_d(option = "plasma", name = "Continent") + 
+      geom_point2(aes(subset = as.numeric(label) < 95 & !isTip), size = 1) +
+    geom_tippoint(aes(color = Country), na.rm = TRUE, size = 0.5) + 
+    scale_color_manual(values  = "red", na.translate = FALSE) +
+    new_scale_fill() 
+) %>% 
+  gheatmap(
+    select(esbl_cpe.ariba410_subset, -sample),
+    font.size = 3,
+    width = 0.5,
+    colnames_position = "top",
+    color = NA,
+    colnames_offset_y = 5,
+    colnames_angle = 90,
+    offset = 0.00006,
+    hjust = 0
+  ) + scale_fill_manual(values = viridis_pal(option = "magma")(5)[c(2,3)],
+                        na.translate = FALSE,
+                        name = "Beta-\nlactamase") +
+  ylim(NA, 200) +
+  geom_treescale(x = 0.0002, y = 250, offset = 2) +
+    geom_highlight(aes(node = 181) , alpha = 0.3) +
+    geom_cladelabel(
+      node = 181,
+      label = "B4/H24RxC",
+      angle = 90,
+      offset = -0.00032,
+      barsize = 0,
+      hjust = 0.5,
+      fontsize = 4,
+      offset.text = -0.00002,
+      color = "steelblue"
+    ) -> st410_subtree_plot
+  
+  ggsave(here("manuscript/esco/figures/FIG_6_st410_treeplot.svg"),
+       st410_subtree_plot, width = 7, height = 6)
+
+st410_subtree_plot
+  
+```
