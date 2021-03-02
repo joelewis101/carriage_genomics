@@ -63,6 +63,8 @@ t1 %>%
 
 ```
 
+### Phylogroup and MLST
+
 ```{r mlst-and-phylogroup, fig.height = 4, fig.width = 7, fig.cap = "FIGURE 1: Sequency types (A) and phylogroups (B) of included isolates"}
 
 left_join(
@@ -101,6 +103,8 @@ ggsave(here("manuscript/esco/figures/FIG_1_mlstplot.svg"), mlst_plot,
 
 mlst_plot 
 ```
+
+### Malawi phylogeny
 
 ```{r malawi-tree, fig.height=9, fig.width= 9, fig.cap = "SUPPLEMENTARY FIGURE 1: Midpoint-rooted maximum-likelohood phylogeny of study isolates shwoing phylogroup and multilocus sequence type."}
 
@@ -164,5 +168,142 @@ ggsave(here("manuscript/esco/figures/SUPP_FIG_1_malawi_treeplot.svg"), malawi_tr
 
 
 ```
+
+### AMR determinents
+
+```{r amrplot, fig.width= 6, fig.height=10}
+
+read_csv("~/Documents/PhD/Thesis/bookdown/chapter_7/amr/srst2_pres_abs.csv") %>% filter(name %in% btESBL_coregene_tree_esco$tip.label) -> amr.ariba
+  
+
+amr.qrdr <- read_csv( "~/Documents/PhD/Thesis/bookdown/chapter_7/amr/qrdr_mut_presence.csv")
+
+# get beta lactamase phenotype and tidy -------------------------------------
+
+bls <- read_tsv(
+  "https://ftp.ncbi.nlm.nih.gov/pathogen/betalactamases/Allele.tab"
+  )
+
+
+bls %>% 
+  rename_with(~ tolower(gsub(" ", "_", .x))) %>% 
+  rename_with(~ gsub("#", "", .x)) %>% 
+  mutate(allele_name = gsub("-", "_", allele_name),
+         class = case_when(
+           grepl("carbapenem-hydrolyzing", 
+                 curated_gene_product_name) ~ "Carbapenemase",
+           grepl("metallo-beta-lactamase", 
+                 curated_gene_product_name) ~ "Carbapenemase",
+           grepl("extended-spectrum beta-lactamase", 
+                 curated_gene_product_name) ~ "ESBL",
+           grepl("class C", 
+                 curated_gene_product_name) ~ "AmpC",
+           grepl("beta-lactamase", 
+                 curated_gene_product_name) ~ "Penicillinase"
+         )) -> 
+  bls
+
+
+
+
+# add class ro which resistnce is conferred --------------------------------
+
+quinolone <- "Par|Gyr|Par|Qnr|Qep|Nor|GyrA|GyrB|ParC|ParE"
+tetracycline<- "Tet"
+sulphonamide <- "Sul"
+aminoglycoside <- "Str|Aad|Aac|Aph|Rmt|APH"
+streptothricin <- "Sat"
+macrolide <- "Mph|Mdf|Erm|Ere"
+fosfomycin <- "Fos"
+chloramphenicol <- "Cat|FloR|Cml"
+trimethoprim <- "Dfr"
+rifampicin <- "Arr"
+ESBL <- "SHV_12"
+penicillinase <- "OKP|SCO|LEN|LAP"
+ampc <- "CMY"
+
+amr.ariba %>% 
+  pivot_longer(-name, names_to = "gene") %>% 
+  bind_rows(
+    amr.qrdr %>% 
+    pivot_longer(-sample, names_to = "gene") %>% 
+      rename(name = sample)
+    ) %>% 
+  filter(gene != "AmpH") %>% 
+  left_join(select(bls, allele_name, class),
+            by = c("gene" = "allele_name")) %>% 
+  mutate(class = case_when(
+    str_detect(gene, quinolone) ~ "Quinolone",
+    str_detect(gene, tetracycline) ~ "Tetracycline",
+    str_detect(gene, sulphonamide) ~ "Sulphonamide",
+    str_detect(gene, aminoglycoside) ~ "Aminoglycoside",
+    str_detect(gene, streptothricin) ~ "Streptothricin",
+    str_detect(gene, macrolide) ~ "Macrolide",
+    str_detect(gene, fosfomycin) ~ "Fosfomycin",
+    str_detect(gene, chloramphenicol) ~ "Chloramphenicol",
+    str_detect(gene, rifampicin) ~ "Rifampicin",
+    str_detect(gene,trimethoprim) ~ "Trimethoprim",
+    str_detect(gene,ESBL) ~ "ESBL",
+    str_detect(gene,penicillinase) ~ "Penicillinase",
+    str_detect(gene,ampc) ~ "AmpC",
+    TRUE ~ class
+  )) ->
+  amr.ariba.long
+
+
+
+## AMR
+
+### Overall prevalence
+
+
+amr.ariba.long %>% 
+  filter(value == 1) %>% 
+  filter(!is.na(class)) %>% 
+  group_by(class) %>% 
+  mutate(n_class = length(class),
+         n_genes_in_class = n_distinct(gene)) %>% 
+  select(class, n_class,n_genes_in_class) %>% 
+  unique() %>% 
+  arrange(n_class) %>% 
+  ungroup() %>% 
+  mutate(end = cumsum(n_genes_in_class),
+         start = lag(end, default = 0),
+         textpos = start+0.6 + 0.5*(end-start)) -> annotate.df
+
+amr.ariba.long %>% 
+  filter(value == 1) %>% 
+  filter(!is.na(class)) %>% 
+  group_by(class) %>% 
+  mutate(n_class = length(class),
+         n_genes_in_class = n_distinct(gene),
+         gene = gsub("_", "-", gene)) %>% 
+ggplot( aes(fct_reorder(fct_rev(fct_infreq(gene)), n_class), 
+            fill = class)) + 
+  geom_bar() +
+  theme_bw() +
+  coord_flip(ylim = c(-5,450),clip = "off", expand = FALSE, xlim = c(0, 76)) +
+  annotate(geom = "segment",
+             x = annotate.df$start +0.5+0.2, 
+             xend = annotate.df$end +0.5-0.2, 
+             y = -115, yend = -115 ) +
+  annotate(geom = "text", y = -125,
+           x = annotate.df$textpos,
+           label = annotate.df$class, 
+           size = 3, 
+           hjust = 1) +
+  labs(y = "Number") + 
+  theme(plot.margin = unit(c(0.2,0.5,0.2,4), "cm"),
+        axis.title.y  = element_blank(),
+        legend.position = "none") -> amrplot
+
+amrplot
+ggsave(filename = here("manuscript/esco/figures/FIG_2_amr_plot.svg"),plot = amrplot,
+       width =6,
+       height = 10
+)
+
+```
+
 
 
