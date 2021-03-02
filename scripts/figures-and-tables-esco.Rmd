@@ -1,0 +1,168 @@
+---
+title: "Figures and tables: _E. coli_ genomics"
+author: "Joe Lewis"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggtree)
+library(ape)
+library(phytools)
+library(tidyverse)
+library(blantyreESBL)
+library(lubridate)
+library(ggnewscale)
+library(countrycode)
+library(viridis)
+library(blantyreESBL)
+library(kableExtra)
+library(patchwork)
+library(here)
+library(ggnewscale)
+library(scales)
+```
+
+## Introduction
+
+This document generates figures and tables for Joe's _E. coli_ genomics paper.
+
+### Assembly stats and accession numbers
+
+```{r accession-table}
+
+btESBL_sequence_sample_metadata %>%
+  filter(lane %in% btESBL_coregene_tree_esco$tip.label) %>%
+  left_join(
+    rbind(
+      read_tsv(
+        "~/Documents/PhD/Thesis/bookdown/chapter_7/checkm_quast/D1/transposed_report.tsv"
+      ) ,
+      read_tsv(
+        "~/Documents/PhD/Thesis/bookdown/chapter_7/checkm_quast/D220190318/transposed_report.tsv"
+      ),
+      read_tsv(
+        "~/Documents/PhD/Thesis/bookdown/chapter_7/checkm_quast/D220190503/transposed_report.tsv"
+      )
+    ) %>%
+      transmute(
+        lane = gsub("\\.contigs_spades", "",  Assembly),
+        number_of_contigs = `# contigs`,
+        N50 = N50
+      ),
+    by = "lane"
+  ) %>% 
+  select(accession, lane, supplier_name, pid, number_of_contigs, N50) -> t1
+
+t1 %>% 
+  kbl(caption = "Accession numbers and assembly statistics for included samples") %>% 
+  kable_classic(full_width = FALSE)
+
+```
+
+```{r mlst-and-phylogroup, fig.height = 4, fig.width = 7, fig.cap = "FIGURE 1: Sequency types (A) and phylogroups (B) of included isolates"}
+
+left_join(
+  read_csv("~/Documents/PhD/Thesis/bookdown/chapter_7/phylogroup_and_mlst/mlst.csv"),
+  read_csv("~/Documents/PhD/Thesis/bookdown/chapter_7/phylogroup_and_mlst/phylogroups.csv"),
+  by = c("lane" = "Lane")
+  ) -> 
+  pgroup_mlst
+
+pgroup_mlst %>% 
+  group_by(ST) %>% 
+  mutate(n = n()) %>% 
+  filter(n > 2) %>% 
+  ggplot(aes(fct_rev(fct_infreq(ST)), fill = Phylogroup)) +
+  geom_bar() +
+  coord_flip() +
+  theme_bw() +
+  theme(legend.position = "none") +
+  labs(x = "ST", y = "n") -> p1 
+#  scale_fill_viridis_d(option = "cividis") -> p1
+  
+pgroup_mlst %>% 
+  ggplot(aes(fct_infreq(Phylogroup), fill = Phylogroup)) +
+  geom_bar() +
+  theme_bw() +
+  theme(legend.position = "none", 
+        axis.text.x = element_text(angle = 45,
+                                   hjust = 1)) +
+#  scale_fill_viridis_d(option = "cividis") +
+  labs(x = "Phylogroup", y = "n") -> p2
+  
+(p1 | p2) + plot_annotation(tag_levels = "A") -> mlst_plot
+
+ggsave(here("manuscript/esco/figures/FIG_1_mlstplot.svg"), mlst_plot,
+       width = 7, height = 4)
+
+mlst_plot 
+```
+
+```{r malawi-tree, fig.height=9, fig.width= 9, fig.cap = "SUPPLEMENTARY FIGURE 1: Midpoint-rooted maximum-likelohood phylogeny of study isolates shwoing phylogroup and multilocus sequence type."}
+
+pgroup_mlst %>% 
+  as.data.frame() -> pgroup_mlst
+
+rownames(pgroup_mlst) <- pgroup_mlst$lane
+
+pgroup_mlst %>% 
+  select(lane, ST) %>% 
+  group_by(ST) %>% 
+  mutate(n = n(),
+         ST = if_else(n ==1, "Other", ST)) %>% 
+#  filter(ST != "Novel") %>% 
+  mutate(ST = if_else(!ST %in% c("Novel", "Other"), 
+                      paste0("ST", ST), ST)) %>% 
+  arrange(fct_infreq(ST)) %>% 
+  pivot_wider(id_cols = lane, 
+              names_from = ST,
+              values_from = ST,
+              values_fn = length,
+              values_fill = 0) %>% 
+  mutate(across(everything(), as.character)
+         ) %>% 
+  relocate(Other, .after = everything()) %>% 
+  as.data.frame() ->
+  mlst_onehot
+
+rownames(mlst_onehot) <- mlst_onehot$lane
+
+(
+  ggtree(btESBL_coregene_tree_esco) %>%
+    gheatmap(
+      select(pgroup_mlst, Phylogroup),
+      width = 0.1,
+      color = NA,
+      font.size = 4,
+      colnames_angle = 90,
+      colnames_position = "top",
+      colnames_offset_y = 3,
+      hjust = 0
+    ) +
+    scale_fill_manual(
+      values = hue_pal()(8),
+      name = "Phylogroup") + 
+   new_scale_fill()
+) %>%
+  gheatmap(select(mlst_onehot, -lane),
+           font.size = 2.5,
+           color = NA,
+           colnames_angle = 90,
+           offset = .03,
+           colnames_offset_y = 3,
+           colnames_position = "top",
+           hjust = 0)  +
+  scale_fill_manual(values = c("lightgrey", "black"), guide = FALSE) +
+  ylim(NA, 560)  + 
+  annotate("text", x= 0.28, y =520, label = "Sequence Type") -> malawi_treeplot
+
+ggsave(here("manuscript/esco/figures/SUPP_FIG_1_malawi_treeplot.svg"), malawi_treeplot, width = 9, height = 9)
+
+
+```
+
+
