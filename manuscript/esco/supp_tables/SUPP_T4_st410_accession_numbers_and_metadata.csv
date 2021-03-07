@@ -1,0 +1,512 @@
+accession,source,country,year
+SRR1180980,Human,United States,2013
+SRR1187805,Human,United States,2013
+SRR1180726,Human,United States,2013
+SRR1187709,Human,United States,2013
+SRR1186782,Human,Tanzania,2009
+SRR1178257,Poultry,United States,2013
+SRR785630,Human,Denmark,2006
+SRR958486,Human,Denmark,2006
+SRR785629,Human,Denmark,2006
+SRR958487,Human,Denmark,2006
+SRR2970227,Poultry,United States,2014
+ERR1351670,Human,Singapore,2010
+SRR3098818,Human,United States,2005
+SRR1508875,Human,Nepal,2011
+SRR3957093,Livestock,United States,1975
+SRR3971185,Livestock,United States,1975
+SRR3971177,Livestock,United States,1975
+SRR3982152,Human,United States,2012
+SRR3987591,Human,Saudi Arabia,1991
+SRR3987983,Poultry,United States,1980
+SRR4017926,Human,United States,2014
+SRR4017900,Human,United States,2014
+SRR4017857,Human,United States,2014
+SRR4035121,Human,United States,2014
+ERR712775,Human,Germany,2014
+ERR712668,Human,Germany,2014
+ERR712659,Human,Germany,2014
+ERR712635,Human,Germany,2014
+ERR712630,Human,Germany,2014
+ERR712589,Human,Germany,2014
+ERR712587,Human,Germany,2014
+ERR712511,Human,Germany,2013
+ERR712485,Human,Germany,2013
+SRR3932426,Human,United States,2016
+SRR4065662,Human,United States,2014
+SRR4262794,Human,United States,1985
+SRR4262712,Human,United States,1985
+ERR1656423,Wild Animal,Denmark,2015
+SRR3999080,Human,United States,2013
+SRR3999076,Human,Brazil,2011
+SRR3999074,Human,United States,2013
+SRR3999067,Human,Brazil,2011
+DRR089062,Environment,Japan,2015
+SRR5470036,Poultry,United States,2015
+ERR1981602,Human,Ireland,2016
+SRR5642082,Human,United States,2013
+SRR5660163,Human,Thailand,2016
+SRR5714040,Human,Canada,2014
+SRR5714046,Human,Canada,2014
+SRR5714048,Human,Canada,2014
+SRR5714064,Human,Canada,2014
+SRR5714073,Human,Canada,2014
+ERR2019250,Livestock,Spain,2015
+ERR2019239,Livestock,Slovenia,2015
+ERR2019230,Livestock,Romania,2015
+ERR2019228,Livestock,Romania,2015
+ERR2019177,Companion Animal,Hungary,2015
+ERR2019163,Livestock,Germany,2015
+ERR2019135,Livestock,Czech Republic,2015
+ERR2019109,Companion Animal,Belgium,2015
+SRR5806867,Human,United States,2016
+SRR5865414,Livestock,United States,2017
+SRR5865593,Livestock,United States,2017
+SRR5884782,Human,Canada,2015
+SRR5936493,Human,Australia,2014
+SRR5936509,Human,Singapore,2015
+SRR5936532,Human,Singapore,2015
+SRR5943569,Human,Thailand,2016
+SRR5943517,Human,Thailand,2016
+SRR5942764,Human,Thailand,2016
+SRR5942540,Human,Thailand,2015
+SRR6118662,Companion Animal,United States,2017
+ERR2088799,Human,Italy,2017
+ERR2193921,Livestock,Germany,2015
+ERR4426173,Human,Sweden,2014
+ERR4426082,Human,Sweden,2014
+SRR6380485,Livestock,United States,2017
+SRR6442662,Environment,China,2017
+ERR2203411,ND,Germany,2015
+SRR6474925,Human,China,2015
+SRR6512532,Wild Animal,United States,2007
+SRR6791869,Human,United States,2016
+SRR6892686,Human,United States,2014
+SRR6892691,Human,United States,2014
+SRR6892776,Human,United States,2014
+SRR6892805,Human,United States,2014
+SRR6942781,Human,China,2016
+SRR6942787,Human,China,2016
+SRR6942789,Human,China,2016
+SRR7026299,Environment,China,2018
+SRR7026300,Environment,China,2018
+SRR7026302,Environment,China,2018
+SRR7026305,Environment,China,2018
+SRR7026310,Environment,China,2018
+SRR7026311,Human,China,2016
+SRR7188515,Environment,China,2018
+SRR7188516,Human,China,2018
+SRR7211943,Human,United Kingdom,2015
+SRR7211944,Human,United Kingdom,2015
+SRR7284885,Livestock,United States,2002
+DRR138472,Human,Thailand,2018
+ERR2540224,Livestock,Italy,2015
+ERR1725937,Human,Saudi Arabia,2014
+ERR1725936,Human,Saudi Arabia,2014
+ERR1725935,Human,Saudi Arabia,2014
+ERR1720665,Human,Saudi Arabia,2014
+ERR1720662,Human,Saudi Arabia,2014
+SRR7613567,Livestock,United States,2013
+SRR7716572,Human,China,2018
+SRR7716575,Human,China,2017
+SRR7724656,Wild Animal,Australia,2017
+SRR7828686,Human,Lebanon,2016
+SRR7828796,Human,Singapore,2016
+SRR7828826,Human,Saudi Arabia,2017
+SRR7839402,Human,United States,2015
+SRR7940163,Livestock,United States,2018
+SRR8095656,Animal Feed,United States,2017
+SRR8095483,Livestock,United States,2017
+SRR8095505,Poultry,United States,2017
+ERR2639321,Companion Animal,France,2012
+ERR2639320,Livestock,France,2012
+ERR2639319,Livestock,France,2012
+ERR2639318,Human,France,2011
+ERR2639317,Human,France,2014
+ERR2639316,Human,France,2014
+ERR2639315,Human,France,2015
+ERR2639314,Human,France,2015
+ERR2639313,Human,France,2015
+ERR2639312,Human,France,2015
+ERR2639310,Human,France,2015
+ERR2639309,Human,France,2015
+ERR2639308,Human,France,2015
+ERR2639307,Human,France,2015
+ERR2639306,Human,France,2015
+ERR2639305,Human,France,2015
+ERR2639304,Human,France,2015
+ERR2639303,Human,France,2015
+ERR2639302,Human,France,2015
+ERR2639301,Human,France,2015
+ERR2639300,Human,France,2015
+ERR2639299,Human,France,2015
+ERR2639298,Human,France,2015
+ERR2639297,Human,France,2015
+ERR2639296,Human,France,2015
+ERR2639295,Human,France,2015
+ERR2639294,Human,France,2015
+ERR2639293,Human,France,2015
+ERR2639292,Human,France,2015
+ERR2639291,Human,France,2015
+ERR2639290,Human,France,2015
+ERR2639289,Human,France,2014
+ERR2639288,Human,France,2014
+ERR2639285,Human,France,2014
+ERR2639284,Human,France,2014
+ERR2639283,Human,France,2014
+ERR2639282,Human,France,2014
+ERR2639281,Human,France,2014
+ERR2639280,Human,France,2014
+ERR2639279,Human,France,2014
+ERR2639278,Human,France,2014
+ERR2639277,Human,France,2014
+ERR2639276,Human,France,2014
+ERR2639275,Human,France,2013
+ERR2639274,Human,France,2013
+ERR2639273,Human,France,2013
+ERR2639272,Human,France,2013
+ERR2639271,Human,France,2013
+ERR2639270,Human,France,2012
+ERR2639269,Human,France,2013
+ERR2861373,Human,Cambodia,2016
+ERR2861372,Human,Cambodia,2016
+ERR2796982,Human,Switzerland,2017
+ERR2796965,Human,Switzerland,2016
+ERR2796909,Human,Switzerland,2012
+SRR8206994,Companion Animal,United States,2018
+SRR8247811,Companion Animal,United States,2018
+SRR8297620,Livestock,United States,2018
+ERR2987482,Livestock,Netherlands,2014
+ERR2987481,Livestock,Netherlands,2014
+ERR2987480,Livestock,Netherlands,2014
+ERR2987479,Livestock,Netherlands,2014
+SRR8397547,Wild Animal,United States,2018
+SRR8502423,Environment,United Kingdom,2015
+ERR2538560,Food,Cambodia,2016
+ERR2538546,Food,Cambodia,2016
+ERR2538545,Food,Cambodia,2016
+ERR2538192,Food,Cambodia,2016
+ERR2538150,Food,Cambodia,2016
+ERR2538143,Food,Cambodia,2016
+SRR7304347,Human,United States,1984
+SRR7304442,Human,United States,1985
+SRR7304444,Human,United States,1996
+SRR6724039,Companion Animal,Germany,2015
+SRR6724058,Companion Animal,Germany,2015
+SRR6505344,Human,Singapore,2012
+SRR6455978,Human,Australia,2009
+SRR6455995,Human,Australia,2008
+SRR6456016,Human,Australia,2013
+SRR6065859,Food,China,2016
+SRR6059895,Human,China,2012
+SRR4302195,Human,Singapore,2014
+SRR4302102,Human,Singapore,2013
+SRR8582159,Livestock,United States,2018
+SRR8606460,Livestock,United States,2019
+SRR8533628,Human,Canada,2010
+ERR3094184,Human,Vietnam,2014
+ERR2935763,Human,Switzerland,2014
+ERR2935696,Human,Switzerland,2014
+ERR2935664,Human,Switzerland,2014
+ERR2935604,Human,Switzerland,2014
+ERR2935512,Human,Switzerland,2014
+ERR2935348,Human,Switzerland,2014
+ERR2935295,Human,Switzerland,2014
+SRR8919638,Human,Thailand,2018
+SRR8916347,Human,Thailand,2017
+SRR8996023,Livestock,United States,2019
+SRR9017111,Companion Animal,United States,2018
+SRR9113458,Human,Oman,2015
+SRR9113468,Human,Oman,2015
+SRR9113479,Human,Oman,2015
+ERR3328925,ND,Kenya,2016
+SRR9160176,Livestock,United States,1982
+SRR9646367,Livestock,United States,2001
+SRR9734547,Human,Australia,2014
+SRR9734564,Human,Australia,2015
+SRR9734573,Human,Australia,2015
+SRR9734586,Human,Australia,2013
+SRR9734632,Human,Australia,2016
+SRR9734633,Human,Australia,2016
+SRR9734634,Human,Australia,2016
+SRR9734640,Human,Australia,2016
+SRR9734649,Human,Australia,2014
+SRR9734750,Human,Australia,2013
+SRR9734780,Human,Australia,2015
+SRR9734819,Human,Australia,2014
+SRR9734855,Human,Australia,2015
+SRR9914118,Livestock,United States,2011
+SRR9913822,Livestock,United States,1975
+SRR9984573,Livestock,United States,2018
+SRR9998287,Companion Animal,United States,2018
+SRR9997704,Companion Animal,United States,2018
+SRR10094339,Animal Feed,Pakistan,2016
+SRR10106480,Human,Canada,2007
+SRR10112531,Human,Canada,2008
+SRR10127140,Human,Australia,2017
+SRR10126784,Human,Australia,2017
+SRR10126801,Human,Australia,2017
+SRR10126894,Human,Australia,2017
+SRR10126963,Human,Australia,2017
+SRR10127015,Human,Australia,2017
+SRR10127019,Human,Australia,2017
+SRR10127035,Human,Australia,2017
+SRR10147623,Human,Canada,2009
+SRR10153071,Human,Canada,2009
+SRR10233477,Human,Canada,2012
+SRR10286059,Human,New Zealand,2016
+SRR10286326,Human,New Zealand,2016
+SRR10270326,Human,Canada,2007
+SRR10257909,Companion Animal,United States,2019
+SRR10255011,Human,Canada,2015
+SRR10251220,Human,Canada,2015
+SRR10310432,Human,Brazil,2016
+SRR10310440,Livestock,Brazil,2019
+SRR10376981,Human,United States,2016
+SRR10006026,Human,Laos,2015
+SRR9088960,Human,China,2018
+SRR8916496,Human,Thailand,2017
+SRR8916349,Human,Thailand,2017
+SRR8505974,Human,Niger,2012
+SRR8505978,Human,Niger,2012
+SRR8505999,Human,Niger,2012
+SRR8506018,Human,Niger,2012
+SRR10506354,Human,Canada,2016
+SRR10810346,Companion Animal,United States,2019
+SRR10688308,Livestock,United States,2001
+SRR11038968,Environment,Switzerland,2019
+SRR10996853,Companion Animal,United States,2019
+SRR10990314,Livestock,United States,2009
+SRR8541407,Human,Canada,2014
+SRR11354603,Human,China,2012
+SRR11402693,Human,United States,2019
+SRR11430521,Livestock,United States,1990
+SRR11430523,Livestock,United States,1990
+SRR11444981,Environment,Canada,2015
+SRR11484750,Livestock,United States,1990
+SRR11484421,Livestock,United States,1975
+SRR11484571,Livestock,United States,1975
+SRR11484575,Wild Animal,United States,2003
+SRR11484615,Wild Animal,United States,1997
+SRR11594606,Human,United States,2019
+ERR4019889,Human,Cambodia,2016
+SRR10230859,Companion Animal,Switzerland,2014
+SRR10188428,Human,Israel,2014
+SRR10188429,Human,Israel,2014
+SRR10188430,Human,Israel,2014
+SRR10188431,Human,Israel,2014
+SRR10188432,Human,Israel,2015
+SRR10188433,Human,Israel,2015
+SRR10188434,Human,Israel,2015
+SRR10188435,Human,Israel,2015
+SRR10188436,Human,Israel,2015
+SRR10188437,Human,Israel,2015
+SRR10188438,Human,Israel,2014
+SRR10188439,Human,Israel,2015
+SRR10188440,Human,Israel,2015
+SRR10188441,Human,Israel,2015
+SRR10188442,Human,Israel,2015
+SRR10188443,Human,Israel,2015
+SRR10188444,Human,Israel,2015
+SRR10188445,Human,Israel,2015
+SRR10188446,Human,Israel,2015
+SRR10188447,Human,Israel,2015
+SRR10188448,Human,Israel,2015
+SRR10188449,Human,Israel,2014
+SRR10188450,Human,Israel,2015
+SRR10188451,Human,Israel,2015
+SRR10188452,Human,Israel,2015
+SRR10188453,Human,Israel,2014
+SRR10188454,Human,Israel,2014
+SRR10188455,Human,Israel,2014
+SRR10188456,Human,Israel,2014
+SRR10188457,Human,Israel,2014
+SRR10188458,Human,Israel,2014
+SRR10188459,Human,Israel,2014
+SRR10188460,Human,Israel,2014
+SRR10188461,Human,Israel,2014
+SRR10188462,Human,Israel,2014
+SRR10188463,Human,Israel,2014
+SRR10188464,Human,Israel,2014
+SRR10188465,Human,Israel,2014
+SRR10188466,Human,Israel,2014
+SRR10188467,Human,Israel,2014
+SRR10188468,Human,Israel,2014
+SRR10188469,Human,Israel,2014
+SRR10188470,Human,Israel,2014
+SRR10188471,Human,Israel,2014
+SRR10188472,Human,Israel,2014
+SRR10188473,Human,Israel,2014
+SRR10188474,Human,Israel,2014
+SRR10188475,Human,Israel,2014
+SRR10188476,Human,Israel,2014
+SRR10188477,Human,Israel,2014
+SRR10188478,Human,Israel,2014
+SRR10188479,Human,Israel,2014
+SRR10188480,Human,Israel,2014
+SRR10188481,Human,Israel,2014
+SRR10188482,Human,Israel,2014
+SRR10188483,Human,Israel,2013
+SRR10123250,Human,Qatar,2018
+SRR8776503,Companion Animal,Italy,2017
+SRR8776587,Livestock,Italy,2016
+SRR8776588,Livestock,Italy,2016
+SRR8776746,Companion Animal,Italy,2017
+SRR8737901,Environment,Germany,2016
+SRR8737916,Environment,Germany,2016
+SRR8737989,Environment,Germany,2016
+SRR11700219,Human,Canada,2017
+SRR11688499,Human,Canada,2017
+SRR11688504,Human,Canada,2017
+SRR11688507,Human,Canada,2017
+SRR11675974,Human,Canada,2017
+SRR11714413,Livestock,United States,2020
+SRR11810144,Livestock,Spain,2014
+SRR11810154,Livestock,Spain,2014
+SRR11810179,Livestock,Spain,2015
+SRR11810203,Livestock,Spain,2015
+SRR11871273,Human,Netherlands,2016
+ERR4180586,Human,Denmark,2018
+ERR4180585,Human,Denmark,2017
+ERR4180584,Human,Denmark,2015
+ERR4180583,Human,Denmark,2015
+ERR4180582,Human,Denmark,2015
+ERR4180581,Human,Denmark,2015
+ERR4180580,Human,Denmark,2018
+ERR4180579,Human,Denmark,2018
+ERR4180578,Human,Denmark,2018
+ERR4180577,Human,Denmark,2018
+ERR4180576,Human,Denmark,2016
+ERR4180575,Human,Denmark,2016
+ERR4095070,Livestock,Vietnam,2018
+SRR11901861,Livestock,United States,2020
+DRR165509,Human,Myanmar [Burma],2018
+SRR12009624,Human,United States,2019
+SRR12009633,Human,United States,2019
+SRR8869639,Livestock,Switzerland,2018
+SRR12117970,Environment,India,2017
+SRR12117973,Environment,India,2017
+ERR4221047,Human,Thailand,2018
+ERR4220853,Livestock,Thailand,2018
+ERR4220805,Human,Thailand,2018
+ERR4220727,Human,Thailand,2018
+ERR4342187,Human,Vietnam,2018
+ERR4342172,Human,Vietnam,2017
+SRR12352253,Human,United States,2020
+SRR12352155,Human,United States,2020
+SRR12358930,Human,United States,2020
+SRR12358931,Human,United States,2020
+SRR12358934,Human,United States,2019
+SRR12519144,Human,United States,2020
+SRR12517483,Human,China,2017
+SRR12517546,Human,China,2016
+SRR12517578,Human,China,2017
+SRR12505079,Livestock,United States,1996
+SRR12495201,Human,Gambia,2018
+SRR12495202,Human,Gambia,2018
+SRR12495203,Human,Gambia,2018
+SRR12495205,Human,Gambia,2018
+SRR12699122,Companion Animal,United States,2019
+ERR4554406,Human,Netherlands,2013
+ERR4557056,Human,Netherlands,2013
+SRR12746173,Food,United States,1982
+SRR11454330,Human,Germany,2010
+SRR11454377,Human,Germany,2012
+SRR11454378,Human,Germany,2012
+SRR11454380,Human,Germany,2012
+SRR11454382,Human,Germany,2012
+SRR11454383,Human,Germany,2012
+SRR11454385,Livestock,Germany,2010
+SRR11454386,Human,Germany,2012
+SRR11454387,Human,Germany,2012
+SRR11454388,Human,Germany,2012
+SRR11454389,Human,Germany,2011
+SRR11454391,Human,Germany,2011
+SRR11454405,Human,Germany,2012
+SRR11454406,Human,Germany,2012
+SRR11454409,Human,Germany,2012
+SRR11454410,Human,Germany,2012
+SRR11454068,Human,Germany,2015
+SRR11454085,Human,Germany,2015
+SRR11454225,Livestock,Germany,2010
+SRR11454265,Human,Germany,2015
+SRR11454268,Companion Animal,Germany,2010
+SRR11454283,Companion Animal,Germany,2010
+SRR11454286,Companion Animal,Germany,2009
+SRR11454320,Human,Germany,2015
+SRR9647673,Human,United States,2018
+SRR8923983,Poultry,United Kingdom,2017
+SRR12764114,Human,United States,2019
+SRR12827480,Livestock,United States,1982
+SRR12827160,Livestock,United States,1982
+SRR12903874,Human,United States,2020
+SRR12903890,Human,United States,2020
+SRR12902467,Human,United States,2017
+SRR12902469,Human,United States,2017
+SRR12902551,Human,United States,2017
+SRR12902560,Human,United States,2017
+SRR12902660,Human,United States,2017
+SRR12902726,Human,United States,2017
+SRR12903834,Human,United States,2020
+SRR13000489,Human,Nigeria,2020
+SRR13000495,Human,Nigeria,2019
+SRR13000389,Livestock,United States,2007
+SRR13001383,Human,Nigeria,2020
+SRR13001385,Human,Nigeria,2020
+SRR13001391,Human,Nigeria,2019
+SRR13001393,Human,Nigeria,2019
+SRR13001399,Human,Nigeria,2019
+SRR13001400,Human,Nigeria,2019
+SRR13001404,Human,Nigeria,2020
+SRR13001288,Human,Nigeria,2020
+SRR13001296,Human,Nigeria,2020
+SRR13001301,Human,Nigeria,2020
+SRR13001302,Human,Nigeria,2020
+SRR13001312,Human,Nigeria,2020
+SRR13001317,Human,Nigeria,2020
+SRR13062328,Human,South Korea,2017
+SRR13080108,Human,United States,2017
+SRR13080127,Human,United States,2017
+SRR13087678,Human,United States,2018
+SRR13086322,Human,United States,2018
+SRR13088916,Human,United States,2019
+SRR13088888,Human,United States,2019
+SRR13129376,Human,United States,2018
+SRR13143249,Poultry,China,2017
+SRR13159140,Human,United States,2020
+SRR13158668,Human,United States,2019
+SRR13158543,Human,United States,2019
+SRR13158516,Human,United States,2019
+SRR13158517,Human,United States,2019
+SRR12569947,Human,Qatar,2017
+SRR12569952,Human,Qatar,2016
+SRR12569955,Human,Qatar,2016
+SRR12569983,Human,Qatar,2015
+SRR12570008,Human,Qatar,2017
+SRR12570022,Human,Qatar,2015
+SRR12569231,Human,Qatar,2017
+SRR12569243,Human,Qatar,2017
+SRR11347902,Human,Qatar,2018
+SRR11348019,Human,Qatar,2018
+SRR11348053,Human,Qatar,2018
+SRR13077256,Human,Singapore,2015
+SRR13077412,Human,Singapore,2016
+SRR10291815,Human,Spain,2018
+SRR13337497,Human,United States,2020
+SRR13337502,Human,United States,2020
+SRR13337510,Human,United States,2020
+SRR13342185,Livestock,China,2018
+SRR13342186,Livestock,China,2018
+SRR13342187,Livestock,China,2018
+SRR13342188,Livestock,China,2018
+SRR13371311,Human,United States,2020
+SRR13371312,Human,United States,2020
+ERR4014311,Human,Denmark,2018
+ERR3393430,Livestock,United Kingdom,2017
+ERR3393409,Livestock,Spain,2017
+ERR3393405,Livestock,Spain,2017
+ERR3393351,Livestock,Romania,2017
+ERR3393324,Livestock,Portugal,2017
+ERR3393304,Livestock,Poland,2017
+ERR3393154,Livestock,Germany,2017
+ERR3393143,Livestock,Germany,2017

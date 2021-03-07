@@ -1,0 +1,711 @@
+[2021-02-25 09:24:08,655] multiqc                                            [DEBUG  ]  No MultiQC config found: /usr/local/lib/python3.8/site-packages/multiqc_config.yaml
+[2021-02-25 09:24:08,656] multiqc                                            [DEBUG  ]  No MultiQC config found: /nfs/users/nfs_j/jl25/.multiqc_config.yaml
+[2021-02-25 09:24:08,656] multiqc                                            [DEBUG  ]  No MultiQC config found: multiqc_config.yaml
+[2021-02-25 09:24:08,656] multiqc                                            [DEBUG  ]  Command used: /usr/local/bin/multiqc .
+[2021-02-25 09:24:10,374] multiqc                                            [WARNING]  MultiQC Version v1.9 now available!
+[2021-02-25 09:24:10,374] multiqc                                            [INFO   ]  This is MultiQC v1.8
+[2021-02-25 09:24:10,374] multiqc                                            [DEBUG  ]  Command     : /usr/local/bin/multiqc .
+[2021-02-25 09:24:10,374] multiqc                                            [DEBUG  ]  Working dir : /lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc
+[2021-02-25 09:24:10,374] multiqc                                            [INFO   ]  Template    : default
+[2021-02-25 09:24:10,374] multiqc                                            [DEBUG  ]  Running Python 3.8.0 | packaged by conda-forge | (default, Nov  6 2019, 23:20:36)  [GCC 7.3.0]
+[2021-02-25 09:24:10,374] multiqc                                            [INFO   ]  Searching   : /lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc
+[2021-02-25 09:24:10,375] multiqc                                            [DEBUG  ]  Analysing modules: custom_content, conpair, peddy, methylQA, phantompeakqualtools, qualimap, preseq, quast, qorts, rna_seqc, rsem, rseqc, busco, goleft_indexcov, disambiguate, supernova, deeptools, sargasso, verifybamid, mirtrace, happy, homer, macs2, theta2, snpeff, gatk, htseq, bcftools, featureCounts, fgbio, dedup, damageprofiler, biobambam2, mtnucratio, picard, prokka, samblaster, samtools, sexdeterrmine, bamtools, jellyfish, vcftools, longranger, stacks, bbmap, bismark, biscuit, hicexplorer, hicup, hicpro, salmon, kallisto, slamdunk, star, hisat2, tophat, bowtie2, bowtie1, kat, leehom, adapterRemoval, clipandmerge, cutadapt, flexbar, trimmomatic, skewer, sortmerna, biobloomtools, fastq_screen, afterqc, fastp, fastqc, minionqc, mosdepth, clusterflow, bcl2fastq, interop, flash, seqyclean
+[2021-02-25 09:24:10,375] multiqc                                            [DEBUG  ]  Using temporary directory for creating report: /tmp/tmpul5a50fd
+[2021-02-25 09:24:10,462] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153284_2_fastqc.html
+[2021-02-25 09:24:10,464] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452356_1_fastqc.html
+[2021-02-25 09:24:10,466] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3393411_2_fastqc.html
+[2021-02-25 09:24:10,467] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR4302082_2_fastqc.html
+[2021-02-25 09:24:10,468] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665526_1_fastqc.html
+[2021-02-25 09:24:10,470] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204412_1_fastqc.html
+[2021-02-25 09:24:10,471] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665529_2_fastqc.html
+[2021-02-25 09:24:10,471] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452375_2_fastqc.html
+[2021-02-25 09:24:10,473] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10512539_1_fastqc.html
+[2021-02-25 09:24:10,475] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1263947_2_fastqc.html
+[2021-02-25 09:24:10,476] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR712515_1_fastqc.html
+[2021-02-25 09:24:10,477] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12916664_2_fastqc.html
+[2021-02-25 09:24:10,477] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620953_2_fastqc.html
+[2021-02-25 09:24:10,478] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486742_2_fastqc.html
+[2021-02-25 09:24:10,479] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12009601_2_fastqc.html
+[2021-02-25 09:24:10,479] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8733918_1_fastqc.html
+[2021-02-25 09:24:10,482] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12462369_2_fastqc.html
+[2021-02-25 09:24:10,482] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204350_2_fastqc.html
+[2021-02-25 09:24:10,483] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620952_2_fastqc.html
+[2021-02-25 09:24:10,484] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3957125_2_fastqc.html
+[2021-02-25 09:24:10,485] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454178_2_fastqc.html
+[2021-02-25 09:24:10,487] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153284_1_fastqc.html
+[2021-02-25 09:24:10,488] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12517447_2_fastqc.html
+[2021-02-25 09:24:10,489] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11347836_1_fastqc.html
+[2021-02-25 09:24:10,490] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10512537_1_fastqc.html
+[2021-02-25 09:24:10,490] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454126_1_fastqc.html
+[2021-02-25 09:24:10,491] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11727679_2_fastqc.html
+[2021-02-25 09:24:10,491] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1508895_2_fastqc.html
+[2021-02-25 09:24:10,492] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10272840_1_fastqc.html
+[2021-02-25 09:24:10,492] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7284874_2_fastqc.html
+[2021-02-25 09:24:10,493] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620965_1_fastqc.html
+[2021-02-25 09:24:10,495] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10094626_2_fastqc.html
+[2021-02-25 09:24:10,495] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13068788_1_fastqc.html
+[2021-02-25 09:24:10,496] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429372_2_fastqc.html
+[2021-02-25 09:24:10,499] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204389_1_fastqc.html
+[2021-02-25 09:24:10,500] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7724633_2_fastqc.html
+[2021-02-25 09:24:10,501] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1314258_2_fastqc.html
+[2021-02-25 09:24:10,502] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665505_2_fastqc.html
+[2021-02-25 09:24:10,502] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR075623_2_fastqc.html
+[2021-02-25 09:24:10,504] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1508893_1_fastqc.html
+[2021-02-25 09:24:10,506] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR4294836_1_fastqc.html
+[2021-02-25 09:24:10,507] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13195675_1_fastqc.html
+[2021-02-25 09:24:10,509] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454062_1_fastqc.html
+[2021-02-25 09:24:10,509] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR4302082_1_fastqc.html
+[2021-02-25 09:24:10,510] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR075612_2_fastqc.html
+[2021-02-25 09:24:10,510] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204390_1_fastqc.html
+[2021-02-25 09:24:10,512] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204352_2_fastqc.html
+[2021-02-25 09:24:10,512] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR712662_1_fastqc.html
+[2021-02-25 09:24:10,514] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12903829_1_fastqc.html
+[2021-02-25 09:24:10,515] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1314503_1_fastqc.html
+[2021-02-25 09:24:10,518] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9113462_2_fastqc.html
+[2021-02-25 09:24:10,518] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11727698_1_fastqc.html
+[2021-02-25 09:24:10,520] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10761131_1_fastqc.html
+[2021-02-25 09:24:10,520] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452356_2_fastqc.html
+[2021-02-25 09:24:10,521] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11038970_2_fastqc.html
+[2021-02-25 09:24:10,521] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10512539_2_fastqc.html
+[2021-02-25 09:24:10,522] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204422_2_fastqc.html
+[2021-02-25 09:24:10,523] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10094626_1_fastqc.html
+[2021-02-25 09:24:10,523] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3393411_1_fastqc.html
+[2021-02-25 09:24:10,525] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11038970_1_fastqc.html
+[2021-02-25 09:24:10,525] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8505979_2_fastqc.html
+[2021-02-25 09:24:10,526] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13000311_2_fastqc.html
+[2021-02-25 09:24:10,527] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8397582_1_fastqc.html
+[2021-02-25 09:24:10,529] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665499_2_fastqc.html
+[2021-02-25 09:24:10,532] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6903163_2_fastqc.html
+[2021-02-25 09:24:10,533] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12269846_1_fastqc.html
+[2021-02-25 09:24:10,533] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR4302198_1_fastqc.html
+[2021-02-25 09:24:10,534] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3466175_2_fastqc.html
+[2021-02-25 09:24:10,534] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11971332_2_fastqc.html
+[2021-02-25 09:24:10,535] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12916664_1_fastqc.html
+[2021-02-25 09:24:10,537] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11727696_1_fastqc.html
+[2021-02-25 09:24:10,538] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13158578_2_fastqc.html
+[2021-02-25 09:24:10,539] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR4302246_2_fastqc.html
+[2021-02-25 09:24:10,539] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9615917_1_fastqc.html
+[2021-02-25 09:24:10,540] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6892809_1_fastqc.html
+[2021-02-25 09:24:10,541] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR061467_1_fastqc.html
+[2021-02-25 09:24:10,542] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8505979_1_fastqc.html
+[2021-02-25 09:24:10,543] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12352183_2_fastqc.html
+[2021-02-25 09:24:10,543] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10163891_1_fastqc.html
+[2021-02-25 09:24:10,544] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204355_1_fastqc.html
+[2021-02-25 09:24:10,544] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204395_2_fastqc.html
+[2021-02-25 09:24:10,545] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10512508_2_fastqc.html
+[2021-02-25 09:24:10,545] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR102586_1_fastqc.html
+[2021-02-25 09:24:10,547] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6942790_2_fastqc.html
+[2021-02-25 09:24:10,549] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620960_1_fastqc.html
+[2021-02-25 09:24:10,550] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665517_2_fastqc.html
+[2021-02-25 09:24:10,552] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9051977_2_fastqc.html
+[2021-02-25 09:24:10,552] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204377_2_fastqc.html
+[2021-02-25 09:24:10,553] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452376_1_fastqc.html
+[2021-02-25 09:24:10,556] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR061467_2_fastqc.html
+[2021-02-25 09:24:10,558] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8071933_1_fastqc.html
+[2021-02-25 09:24:10,559] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12519146_1_fastqc.html
+[2021-02-25 09:24:10,559] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620925_2_fastqc.html
+[2021-02-25 09:24:10,560] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665525_2_fastqc.html
+[2021-02-25 09:24:10,560] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12508632_1_fastqc.html
+[2021-02-25 09:24:10,561] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7943899_1_fastqc.html
+[2021-02-25 09:24:10,562] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429307_1_fastqc.html
+[2021-02-25 09:24:10,563] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13080118_2_fastqc.html
+[2021-02-25 09:24:10,563] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454126_2_fastqc.html
+[2021-02-25 09:24:10,564] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153281_1_fastqc.html
+[2021-02-25 09:24:10,565] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429348_1_fastqc.html
+[2021-02-25 09:24:10,565] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429313_2_fastqc.html
+[2021-02-25 09:24:10,566] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665526_2_fastqc.html
+[2021-02-25 09:24:10,567] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11727698_2_fastqc.html
+[2021-02-25 09:24:10,568] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665525_1_fastqc.html
+[2021-02-25 09:24:10,568] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11903067_2_fastqc.html
+[2021-02-25 09:24:10,572] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6455985_1_fastqc.html
+[2021-02-25 09:24:10,573] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6451285_1_fastqc.html
+[2021-02-25 09:24:10,574] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454384_2_fastqc.html
+[2021-02-25 09:24:10,575] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006107_2_fastqc.html
+[2021-02-25 09:24:10,577] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10752090_1_fastqc.html
+[2021-02-25 09:24:10,577] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3375634_2_fastqc.html
+[2021-02-25 09:24:10,580] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665516_2_fastqc.html
+[2021-02-25 09:24:10,581] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006058_2_fastqc.html
+[2021-02-25 09:24:10,581] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620921_2_fastqc.html
+[2021-02-25 09:24:10,582] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10761131_2_fastqc.html
+[2021-02-25 09:24:10,585] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11068097_1_fastqc.html
+[2021-02-25 09:24:10,585] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3333495_1_fastqc.html
+[2021-02-25 09:24:10,586] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11727679_1_fastqc.html
+[2021-02-25 09:24:10,586] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12903829_2_fastqc.html
+[2021-02-25 09:24:10,587] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8737876_1_fastqc.html
+[2021-02-25 09:24:10,588] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13000507_1_fastqc.html
+[2021-02-25 09:24:10,589] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12009569_1_fastqc.html
+[2021-02-25 09:24:10,592] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6892789_1_fastqc.html
+[2021-02-25 09:24:10,592] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12072648_1_fastqc.html
+[2021-02-25 09:24:10,595] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13001310_2_fastqc.html
+[2021-02-25 09:24:10,595] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665516_1_fastqc.html
+[2021-02-25 09:24:10,597] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7827099_1_fastqc.html
+[2021-02-25 09:24:10,597] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452376_2_fastqc.html
+[2021-02-25 09:24:10,598] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454319_1_fastqc.html
+[2021-02-25 09:24:10,599] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR4302246_1_fastqc.html
+[2021-02-25 09:24:10,600] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12009590_1_fastqc.html
+[2021-02-25 09:24:10,602] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3375634_1_fastqc.html
+[2021-02-25 09:24:10,603] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12009590_2_fastqc.html
+[2021-02-25 09:24:10,603] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006108_1_fastqc.html
+[2021-02-25 09:24:10,604] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7716571_1_fastqc.html
+[2021-02-25 09:24:10,605] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3333478_2_fastqc.html
+[2021-02-25 09:24:10,605] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13362842_1_fastqc.html
+[2021-02-25 09:24:10,607] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13158578_1_fastqc.html
+[2021-02-25 09:24:10,607] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3333495_2_fastqc.html
+[2021-02-25 09:24:10,608] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6451281_2_fastqc.html
+[2021-02-25 09:24:10,608] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7850985_2_fastqc.html
+[2021-02-25 09:24:10,609] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3574326_1_fastqc.html
+[2021-02-25 09:24:10,609] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7500678_2_fastqc.html
+[2021-02-25 09:24:10,610] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3375690_1_fastqc.html
+[2021-02-25 09:24:10,611] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12570014_2_fastqc.html
+[2021-02-25 09:24:10,612] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10749233_2_fastqc.html
+[2021-02-25 09:24:10,613] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6455982_1_fastqc.html
+[2021-02-25 09:24:10,613] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1263950_2_fastqc.html
+[2021-02-25 09:24:10,615] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11833408_1_fastqc.html
+[2021-02-25 09:24:10,617] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR712617_2_fastqc.html
+[2021-02-25 09:24:10,617] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10751453_1_fastqc.html
+[2021-02-25 09:24:10,618] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3098780_2_fastqc.html
+[2021-02-25 09:24:10,618] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620940_2_fastqc.html
+[2021-02-25 09:24:10,619] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9301096_2_fastqc.html
+[2021-02-25 09:24:10,621] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10512969_2_fastqc.html
+[2021-02-25 09:24:10,621] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR712515_2_fastqc.html
+[2021-02-25 09:24:10,622] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10751453_2_fastqc.html
+[2021-02-25 09:24:10,622] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10115845_1_fastqc.html
+[2021-02-25 09:24:10,625] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429356_2_fastqc.html
+[2021-02-25 09:24:10,625] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12902538_1_fastqc.html
+[2021-02-25 09:24:10,630] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454163_1_fastqc.html
+[2021-02-25 09:24:10,631] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11495756_2_fastqc.html
+[2021-02-25 09:24:10,632] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454178_1_fastqc.html
+[2021-02-25 09:24:10,632] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4095062_1_fastqc.html
+[2021-02-25 09:24:10,636] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6451282_1_fastqc.html
+[2021-02-25 09:24:10,640] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665517_1_fastqc.html
+[2021-02-25 09:24:10,646] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7042020_2_fastqc.html
+[2021-02-25 09:24:10,647] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13068788_2_fastqc.html
+[2021-02-25 09:24:10,648] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5714074_2_fastqc.html
+[2021-02-25 09:24:10,648] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9113487_1_fastqc.html
+[2021-02-25 09:24:10,649] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11970754_2_fastqc.html
+[2021-02-25 09:24:10,652] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429344_1_fastqc.html
+[2021-02-25 09:24:10,654] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153290_1_fastqc.html
+[2021-02-25 09:24:10,655] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6376588_2_fastqc.html
+[2021-02-25 09:24:10,658] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3333478_1_fastqc.html
+[2021-02-25 09:24:10,659] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7716571_2_fastqc.html
+[2021-02-25 09:24:10,660] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13085650_1_fastqc.html
+[2021-02-25 09:24:10,661] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9301096_1_fastqc.html
+[2021-02-25 09:24:10,662] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006055_2_fastqc.html
+[2021-02-25 09:24:10,663] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6451285_2_fastqc.html
+[2021-02-25 09:24:10,664] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12358935_2_fastqc.html
+[2021-02-25 09:24:10,665] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486735_2_fastqc.html
+[2021-02-25 09:24:10,668] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12358935_1_fastqc.html
+[2021-02-25 09:24:10,669] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13195690_1_fastqc.html
+[2021-02-25 09:24:10,670] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6515382_2_fastqc.html
+[2021-02-25 09:24:10,671] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3375690_2_fastqc.html
+[2021-02-25 09:24:10,673] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665499_1_fastqc.html
+[2021-02-25 09:24:10,676] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12352183_1_fastqc.html
+[2021-02-25 09:24:10,677] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7870867_1_fastqc.html
+[2021-02-25 09:24:10,677] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7827099_2_fastqc.html
+[2021-02-25 09:24:10,678] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5884784_1_fastqc.html
+[2021-02-25 09:24:10,678] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1195513_2_fastqc.html
+[2021-02-25 09:24:10,680] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6376588_1_fastqc.html
+[2021-02-25 09:24:10,683] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4095062_2_fastqc.html
+[2021-02-25 09:24:10,684] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR712769_1_fastqc.html
+[2021-02-25 09:24:10,688] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204417_1_fastqc.html
+[2021-02-25 09:24:10,688] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12902581_2_fastqc.html
+[2021-02-25 09:24:10,690] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454284_2_fastqc.html
+[2021-02-25 09:24:10,691] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7724795_2_fastqc.html
+[2021-02-25 09:24:10,692] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486743_2_fastqc.html
+[2021-02-25 09:24:10,692] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7724616_1_fastqc.html
+[2021-02-25 09:24:10,693] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6451281_1_fastqc.html
+[2021-02-25 09:24:10,695] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4426043_1_fastqc.html
+[2021-02-25 09:24:10,695] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8187980_2_fastqc.html
+[2021-02-25 09:24:10,698] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5024314_1_fastqc.html
+[2021-02-25 09:24:10,701] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR4101520_1_fastqc.html
+[2021-02-25 09:24:10,702] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6892809_2_fastqc.html
+[2021-02-25 09:24:10,703] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6451284_1_fastqc.html
+[2021-02-25 09:24:10,704] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13156974_2_fastqc.html
+[2021-02-25 09:24:10,704] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7870871_2_fastqc.html
+[2021-02-25 09:24:10,705] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8733918_2_fastqc.html
+[2021-02-25 09:24:10,706] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR2203409_1_fastqc.html
+[2021-02-25 09:24:10,708] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620890_1_fastqc.html
+[2021-02-25 09:24:10,708] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR4101520_2_fastqc.html
+[2021-02-25 09:24:10,709] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665529_1_fastqc.html
+[2021-02-25 09:24:10,710] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486737_1_fastqc.html
+[2021-02-25 09:24:10,712] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1195513_1_fastqc.html
+[2021-02-25 09:24:10,712] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620883_1_fastqc.html
+[2021-02-25 09:24:10,713] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3951679_1_fastqc.html
+[2021-02-25 09:24:10,714] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620942_1_fastqc.html
+[2021-02-25 09:24:10,714] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR712691_1_fastqc.html
+[2021-02-25 09:24:10,715] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3393396_2_fastqc.html
+[2021-02-25 09:24:10,715] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429295_2_fastqc.html
+[2021-02-25 09:24:10,716] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12072638_2_fastqc.html
+[2021-02-25 09:24:10,717] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8505980_2_fastqc.html
+[2021-02-25 09:24:10,720] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620946_2_fastqc.html
+[2021-02-25 09:24:10,721] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153286_2_fastqc.html
+[2021-02-25 09:24:10,722] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12569950_2_fastqc.html
+[2021-02-25 09:24:10,722] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6451286_1_fastqc.html
+[2021-02-25 09:24:10,724] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006108_2_fastqc.html
+[2021-02-25 09:24:10,724] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1263950_1_fastqc.html
+[2021-02-25 09:24:10,725] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR712769_2_fastqc.html
+[2021-02-25 09:24:10,726] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10115845_2_fastqc.html
+[2021-02-25 09:24:10,727] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3095388_2_fastqc.html
+[2021-02-25 09:24:10,728] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10512508_1_fastqc.html
+[2021-02-25 09:24:10,728] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13195688_1_fastqc.html
+[2021-02-25 09:24:10,729] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR2935635_1_fastqc.html
+[2021-02-25 09:24:10,731] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7870868_1_fastqc.html
+[2021-02-25 09:24:10,732] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665505_1_fastqc.html
+[2021-02-25 09:24:10,734] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9301084_1_fastqc.html
+[2021-02-25 09:24:10,737] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR2796921_2_fastqc.html
+[2021-02-25 09:24:10,738] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13081910_1_fastqc.html
+[2021-02-25 09:24:10,738] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10207198_2_fastqc.html
+[2021-02-25 09:24:10,739] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665510_2_fastqc.html
+[2021-02-25 09:24:10,741] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR075633_2_fastqc.html
+[2021-02-25 09:24:10,742] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6474927_1_fastqc.html
+[2021-02-25 09:24:10,744] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620965_2_fastqc.html
+[2021-02-25 09:24:10,744] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10235879_2_fastqc.html
+[2021-02-25 09:24:10,745] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7943899_2_fastqc.html
+[2021-02-25 09:24:10,745] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486744_2_fastqc.html
+[2021-02-25 09:24:10,746] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11727691_2_fastqc.html
+[2021-02-25 09:24:10,749] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12509131_2_fastqc.html
+[2021-02-25 09:24:10,751] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3929024_1_fastqc.html
+[2021-02-25 09:24:10,751] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486742_1_fastqc.html
+[2021-02-25 09:24:10,753] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153283_1_fastqc.html
+[2021-02-25 09:24:10,754] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153287_2_fastqc.html
+[2021-02-25 09:24:10,754] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429309_2_fastqc.html
+[2021-02-25 09:24:10,755] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11727700_2_fastqc.html
+[2021-02-25 09:24:10,755] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452442_2_fastqc.html
+[2021-02-25 09:24:10,756] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR2203409_2_fastqc.html
+[2021-02-25 09:24:10,758] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7724809_1_fastqc.html
+[2021-02-25 09:24:10,759] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6515382_1_fastqc.html
+[2021-02-25 09:24:10,760] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9615917_2_fastqc.html
+[2021-02-25 09:24:10,760] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12903819_2_fastqc.html
+[2021-02-25 09:24:10,761] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153286_1_fastqc.html
+[2021-02-25 09:24:10,762] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204395_1_fastqc.html
+[2021-02-25 09:24:10,764] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR2796921_1_fastqc.html
+[2021-02-25 09:24:10,766] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620953_1_fastqc.html
+[2021-02-25 09:24:10,767] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204352_1_fastqc.html
+[2021-02-25 09:24:10,768] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR075623_1_fastqc.html
+[2021-02-25 09:24:10,769] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12902520_1_fastqc.html
+[2021-02-25 09:24:10,769] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9990246_1_fastqc.html
+[2021-02-25 09:24:10,770] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13081910_2_fastqc.html
+[2021-02-25 09:24:10,772] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13001406_2_fastqc.html
+[2021-02-25 09:24:10,772] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13156974_1_fastqc.html
+[2021-02-25 09:24:10,773] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12517471_1_fastqc.html
+[2021-02-25 09:24:10,774] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454384_1_fastqc.html
+[2021-02-25 09:24:10,774] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153282_1_fastqc.html
+[2021-02-25 09:24:10,777] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12508892_1_fastqc.html
+[2021-02-25 09:24:10,777] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13085650_2_fastqc.html
+[2021-02-25 09:24:10,778] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6455985_2_fastqc.html
+[2021-02-25 09:24:10,778] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006055_1_fastqc.html
+[2021-02-25 09:24:10,779] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11727700_1_fastqc.html
+[2021-02-25 09:24:10,779] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13158550_1_fastqc.html
+[2021-02-25 09:24:10,780] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153282_2_fastqc.html
+[2021-02-25 09:24:10,781] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153283_2_fastqc.html
+[2021-02-25 09:24:10,783] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10752090_2_fastqc.html
+[2021-02-25 09:24:10,783] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3957125_1_fastqc.html
+[2021-02-25 09:24:10,785] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11971332_1_fastqc.html
+[2021-02-25 09:24:10,785] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7716573_1_fastqc.html
+[2021-02-25 09:24:10,787] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR712662_2_fastqc.html
+[2021-02-25 09:24:10,787] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11833408_2_fastqc.html
+[2021-02-25 09:24:10,788] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620950_1_fastqc.html
+[2021-02-25 09:24:10,788] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10512969_1_fastqc.html
+[2021-02-25 09:24:10,789] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10286137_1_fastqc.html
+[2021-02-25 09:24:10,789] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6455982_2_fastqc.html
+[2021-02-25 09:24:10,790] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6451283_1_fastqc.html
+[2021-02-25 09:24:10,790] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006059_2_fastqc.html
+[2021-02-25 09:24:10,792] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454284_1_fastqc.html
+[2021-02-25 09:24:10,794] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204417_2_fastqc.html
+[2021-02-25 09:24:10,794] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620883_2_fastqc.html
+[2021-02-25 09:24:10,795] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR2935754_1_fastqc.html
+[2021-02-25 09:24:10,795] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7724633_1_fastqc.html
+[2021-02-25 09:24:10,796] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10126951_2_fastqc.html
+[2021-02-25 09:24:10,797] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7870887_1_fastqc.html
+[2021-02-25 09:24:10,798] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204389_2_fastqc.html
+[2021-02-25 09:24:10,799] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8187980_1_fastqc.html
+[2021-02-25 09:24:10,799] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7851090_1_fastqc.html
+[2021-02-25 09:24:10,801] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7724809_2_fastqc.html
+[2021-02-25 09:24:10,801] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6451284_2_fastqc.html
+[2021-02-25 09:24:10,802] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12902538_2_fastqc.html
+[2021-02-25 09:24:10,805] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7869087_2_fastqc.html
+[2021-02-25 09:24:10,805] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR712516_1_fastqc.html
+[2021-02-25 09:24:10,807] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204378_2_fastqc.html
+[2021-02-25 09:24:10,808] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13362843_2_fastqc.html
+[2021-02-25 09:24:10,809] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13195707_1_fastqc.html
+[2021-02-25 09:24:10,811] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452380_1_fastqc.html
+[2021-02-25 09:24:10,813] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12517447_1_fastqc.html
+[2021-02-25 09:24:10,815] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10094627_1_fastqc.html
+[2021-02-25 09:24:10,817] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR102586_2_fastqc.html
+[2021-02-25 09:24:10,817] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486735_1_fastqc.html
+[2021-02-25 09:24:10,818] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204422_1_fastqc.html
+[2021-02-25 09:24:10,818] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR712617_1_fastqc.html
+[2021-02-25 09:24:10,822] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11341626_1_fastqc.html
+[2021-02-25 09:24:10,822] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12462373_1_fastqc.html
+[2021-02-25 09:24:10,824] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13195682_1_fastqc.html
+[2021-02-25 09:24:10,826] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3098780_1_fastqc.html
+[2021-02-25 09:24:10,827] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10094627_2_fastqc.html
+[2021-02-25 09:24:10,828] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8505980_1_fastqc.html
+[2021-02-25 09:24:10,829] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10286349_1_fastqc.html
+[2021-02-25 09:24:10,830] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620890_2_fastqc.html
+[2021-02-25 09:24:10,831] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11903067_1_fastqc.html
+[2021-02-25 09:24:10,831] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12769881_1_fastqc.html
+[2021-02-25 09:24:10,836] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454299_1_fastqc.html
+[2021-02-25 09:24:10,836] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665503_2_fastqc.html
+[2021-02-25 09:24:10,837] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006105_2_fastqc.html
+[2021-02-25 09:24:10,838] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4131613_1_fastqc.html
+[2021-02-25 09:24:10,838] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13195696_2_fastqc.html
+[2021-02-25 09:24:10,839] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6451283_2_fastqc.html
+[2021-02-25 09:24:10,840] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204377_1_fastqc.html
+[2021-02-25 09:24:10,840] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006059_1_fastqc.html
+[2021-02-25 09:24:10,843] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6515383_2_fastqc.html
+[2021-02-25 09:24:10,844] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13195675_2_fastqc.html
+[2021-02-25 09:24:10,845] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620940_1_fastqc.html
+[2021-02-25 09:24:10,846] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6942788_1_fastqc.html
+[2021-02-25 09:24:10,847] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153285_2_fastqc.html
+[2021-02-25 09:24:10,847] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7870867_2_fastqc.html
+[2021-02-25 09:24:10,851] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10173687_1_fastqc.html
+[2021-02-25 09:24:10,855] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6686320_1_fastqc.html
+[2021-02-25 09:24:10,856] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9988394_1_fastqc.html
+[2021-02-25 09:24:10,857] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR075620_1_fastqc.html
+[2021-02-25 09:24:10,858] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620924_1_fastqc.html
+[2021-02-25 09:24:10,859] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3929024_2_fastqc.html
+[2021-02-25 09:24:10,860] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6455974_1_fastqc.html
+[2021-02-25 09:24:10,861] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12009601_1_fastqc.html
+[2021-02-25 09:24:10,865] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204375_1_fastqc.html
+[2021-02-25 09:24:10,866] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204354_1_fastqc.html
+[2021-02-25 09:24:10,868] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13000307_1_fastqc.html
+[2021-02-25 09:24:10,868] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7716574_2_fastqc.html
+[2021-02-25 09:24:10,870] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12517471_2_fastqc.html
+[2021-02-25 09:24:10,870] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11970754_1_fastqc.html
+[2021-02-25 09:24:10,871] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620960_2_fastqc.html
+[2021-02-25 09:24:10,871] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204378_1_fastqc.html
+[2021-02-25 09:24:10,873] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006107_1_fastqc.html
+[2021-02-25 09:24:10,874] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1263949_2_fastqc.html
+[2021-02-25 09:24:10,875] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1263949_1_fastqc.html
+[2021-02-25 09:24:10,875] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204354_2_fastqc.html
+[2021-02-25 09:24:10,876] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7724795_1_fastqc.html
+[2021-02-25 09:24:10,877] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3393406_2_fastqc.html
+[2021-02-25 09:24:10,878] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7850985_1_fastqc.html
+[2021-02-25 09:24:10,879] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204419_2_fastqc.html
+[2021-02-25 09:24:10,880] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6451286_2_fastqc.html
+[2021-02-25 09:24:10,880] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR075640_2_fastqc.html
+[2021-02-25 09:24:10,882] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11341626_2_fastqc.html
+[2021-02-25 09:24:10,883] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1912635_2_fastqc.html
+[2021-02-25 09:24:10,884] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR075620_2_fastqc.html
+[2021-02-25 09:24:10,885] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10750973_2_fastqc.html
+[2021-02-25 09:24:10,886] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9301084_2_fastqc.html
+[2021-02-25 09:24:10,887] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7869087_1_fastqc.html
+[2021-02-25 09:24:10,888] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10512537_2_fastqc.html
+[2021-02-25 09:24:10,890] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665491_1_fastqc.html
+[2021-02-25 09:24:10,891] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6455967_2_fastqc.html
+[2021-02-25 09:24:10,892] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7042020_1_fastqc.html
+[2021-02-25 09:24:10,892] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204350_1_fastqc.html
+[2021-02-25 09:24:10,893] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8767398_1_fastqc.html
+[2021-02-25 09:24:10,893] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486736_2_fastqc.html
+[2021-02-25 09:24:10,896] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8071933_2_fastqc.html
+[2021-02-25 09:24:10,896] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8767398_2_fastqc.html
+[2021-02-25 09:24:10,897] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7870868_2_fastqc.html
+[2021-02-25 09:24:10,897] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11727696_2_fastqc.html
+[2021-02-25 09:24:10,898] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12462369_1_fastqc.html
+[2021-02-25 09:24:10,900] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6065849_1_fastqc.html
+[2021-02-25 09:24:10,900] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10749233_1_fastqc.html
+[2021-02-25 09:24:10,902] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12509131_1_fastqc.html
+[2021-02-25 09:24:10,903] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429344_2_fastqc.html
+[2021-02-25 09:24:10,903] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9113455_2_fastqc.html
+[2021-02-25 09:24:10,904] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11038969_1_fastqc.html
+[2021-02-25 09:24:10,906] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10512503_2_fastqc.html
+[2021-02-25 09:24:10,907] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9734793_1_fastqc.html
+[2021-02-25 09:24:10,908] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR075612_1_fastqc.html
+[2021-02-25 09:24:10,910] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10163891_2_fastqc.html
+[2021-02-25 09:24:10,910] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12903893_1_fastqc.html
+[2021-02-25 09:24:10,911] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1263946_1_fastqc.html
+[2021-02-25 09:24:10,912] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10103880_2_fastqc.html
+[2021-02-25 09:24:10,912] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620942_2_fastqc.html
+[2021-02-25 09:24:10,914] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1263948_1_fastqc.html
+[2021-02-25 09:24:10,914] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10103880_1_fastqc.html
+[2021-02-25 09:24:10,915] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12902520_2_fastqc.html
+[2021-02-25 09:24:10,916] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665523_1_fastqc.html
+[2021-02-25 09:24:10,917] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620952_1_fastqc.html
+[2021-02-25 09:24:10,918] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10207198_1_fastqc.html
+[2021-02-25 09:24:10,919] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12903833_1_fastqc.html
+[2021-02-25 09:24:10,919] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7716573_2_fastqc.html
+[2021-02-25 09:24:10,920] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6942790_1_fastqc.html
+[2021-02-25 09:24:10,921] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620924_2_fastqc.html
+[2021-02-25 09:24:10,922] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204390_2_fastqc.html
+[2021-02-25 09:24:10,922] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12903833_2_fastqc.html
+[2021-02-25 09:24:10,923] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6903163_1_fastqc.html
+[2021-02-25 09:24:10,925] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1263948_2_fastqc.html
+[2021-02-25 09:24:10,925] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7826035_2_fastqc.html
+[2021-02-25 09:24:10,926] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1263947_1_fastqc.html
+[2021-02-25 09:24:10,927] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6067099_1_fastqc.html
+[2021-02-25 09:24:10,928] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3393406_1_fastqc.html
+[2021-02-25 09:24:10,933] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204388_1_fastqc.html
+[2021-02-25 09:24:10,934] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10230871_2_fastqc.html
+[2021-02-25 09:24:10,935] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13195696_1_fastqc.html
+[2021-02-25 09:24:10,937] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12072617_2_fastqc.html
+[2021-02-25 09:24:10,937] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR4294836_2_fastqc.html
+[2021-02-25 09:24:10,938] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR2935754_2_fastqc.html
+[2021-02-25 09:24:10,939] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12462373_2_fastqc.html
+[2021-02-25 09:24:10,943] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5024314_2_fastqc.html
+[2021-02-25 09:24:10,944] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13000311_1_fastqc.html
+[2021-02-25 09:24:10,945] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10235879_1_fastqc.html
+[2021-02-25 09:24:10,946] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10750973_1_fastqc.html
+[2021-02-25 09:24:10,947] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1912634_2_fastqc.html
+[2021-02-25 09:24:10,949] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR4302198_2_fastqc.html
+[2021-02-25 09:24:10,949] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13362843_1_fastqc.html
+[2021-02-25 09:24:10,952] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10230871_1_fastqc.html
+[2021-02-25 09:24:10,952] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11038969_2_fastqc.html
+[2021-02-25 09:24:10,953] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8737876_2_fastqc.html
+[2021-02-25 09:24:10,956] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12570020_1_fastqc.html
+[2021-02-25 09:24:10,957] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620925_1_fastqc.html
+[2021-02-25 09:24:10,958] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9990246_2_fastqc.html
+[2021-02-25 09:24:10,959] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13158550_2_fastqc.html
+[2021-02-25 09:24:10,959] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3393396_1_fastqc.html
+[2021-02-25 09:24:10,960] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006056_1_fastqc.html
+[2021-02-25 09:24:10,961] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10126951_1_fastqc.html
+[2021-02-25 09:24:10,964] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7026303_2_fastqc.html
+[2021-02-25 09:24:10,965] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454163_2_fastqc.html
+[2021-02-25 09:24:10,969] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12903819_1_fastqc.html
+[2021-02-25 09:24:10,970] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204419_1_fastqc.html
+[2021-02-25 09:24:10,972] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153287_1_fastqc.html
+[2021-02-25 09:24:10,974] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006051_2_fastqc.html
+[2021-02-25 09:24:10,974] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1912634_1_fastqc.html
+[2021-02-25 09:24:10,975] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6686320_2_fastqc.html
+[2021-02-25 09:24:10,976] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153290_2_fastqc.html
+[2021-02-25 09:24:10,977] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429295_1_fastqc.html
+[2021-02-25 09:24:10,978] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR8397582_2_fastqc.html
+[2021-02-25 09:24:10,979] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153281_2_fastqc.html
+[2021-02-25 09:24:10,979] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429372_1_fastqc.html
+[2021-02-25 09:24:10,980] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13001310_1_fastqc.html
+[2021-02-25 09:24:10,981] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452361_2_fastqc.html
+[2021-02-25 09:24:10,981] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620892_2_fastqc.html
+[2021-02-25 09:24:10,982] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12508632_2_fastqc.html
+[2021-02-25 09:24:10,985] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6065798_1_fastqc.html
+[2021-02-25 09:24:10,986] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9113455_1_fastqc.html
+[2021-02-25 09:24:10,986] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9988394_2_fastqc.html
+[2021-02-25 09:24:10,987] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7851090_2_fastqc.html
+[2021-02-25 09:24:10,987] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7716577_1_fastqc.html
+[2021-02-25 09:24:10,988] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006105_1_fastqc.html
+[2021-02-25 09:24:10,990] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429356_1_fastqc.html
+[2021-02-25 09:24:10,991] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204413_2_fastqc.html
+[2021-02-25 09:24:10,991] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204388_2_fastqc.html
+[2021-02-25 09:24:10,992] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9051977_1_fastqc.html
+[2021-02-25 09:24:10,992] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10286349_2_fastqc.html
+[2021-02-25 09:24:10,993] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10525639_1_fastqc.html
+[2021-02-25 09:24:10,994] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454319_2_fastqc.html
+[2021-02-25 09:24:10,996] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452380_2_fastqc.html
+[2021-02-25 09:24:10,997] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1508895_1_fastqc.html
+[2021-02-25 09:24:10,998] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204413_1_fastqc.html
+[2021-02-25 09:24:10,998] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006056_2_fastqc.html
+[2021-02-25 09:24:10,999] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10512503_1_fastqc.html
+[2021-02-25 09:24:11,000] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204355_2_fastqc.html
+[2021-02-25 09:24:11,000] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13001406_1_fastqc.html
+[2021-02-25 09:24:11,003] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9734793_2_fastqc.html
+[2021-02-25 09:24:11,003] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3095388_1_fastqc.html
+[2021-02-25 09:24:11,004] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6703063_2_fastqc.html
+[2021-02-25 09:24:11,004] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429307_2_fastqc.html
+[2021-02-25 09:24:11,006] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1263946_2_fastqc.html
+[2021-02-25 09:24:11,007] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4554412_2_fastqc.html
+[2021-02-25 09:24:11,008] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454299_2_fastqc.html
+[2021-02-25 09:24:11,012] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7716577_2_fastqc.html
+[2021-02-25 09:24:11,015] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10525639_2_fastqc.html
+[2021-02-25 09:24:11,019] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13195690_2_fastqc.html
+[2021-02-25 09:24:11,019] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7826035_1_fastqc.html
+[2021-02-25 09:24:11,022] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6474927_2_fastqc.html
+[2021-02-25 09:24:11,023] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006058_1_fastqc.html
+[2021-02-25 09:24:11,024] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10272840_2_fastqc.html
+[2021-02-25 09:24:11,024] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13080118_1_fastqc.html
+[2021-02-25 09:24:11,024] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6942788_2_fastqc.html
+[2021-02-25 09:24:11,025] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7716574_1_fastqc.html
+[2021-02-25 09:24:11,026] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4554412_1_fastqc.html
+[2021-02-25 09:24:11,026] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12072648_2_fastqc.html
+[2021-02-25 09:24:11,027] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR075640_1_fastqc.html
+[2021-02-25 09:24:11,027] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5884784_2_fastqc.html
+[2021-02-25 09:24:11,028] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3393084_1_fastqc.html
+[2021-02-25 09:24:11,028] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12072617_1_fastqc.html
+[2021-02-25 09:24:11,029] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7500678_1_fastqc.html
+[2021-02-25 09:24:11,030] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12508892_2_fastqc.html
+[2021-02-25 09:24:11,033] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665523_2_fastqc.html
+[2021-02-25 09:24:11,033] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4426043_2_fastqc.html
+[2021-02-25 09:24:11,035] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6703063_1_fastqc.html
+[2021-02-25 09:24:11,035] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11454062_2_fastqc.html
+[2021-02-25 09:24:11,039] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665510_1_fastqc.html
+[2021-02-25 09:24:11,040] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13195682_2_fastqc.html
+[2021-02-25 09:24:11,041] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10286137_2_fastqc.html
+[2021-02-25 09:24:11,041] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429313_1_fastqc.html
+[2021-02-25 09:24:11,042] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12570020_2_fastqc.html
+[2021-02-25 09:24:11,043] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10751454_1_fastqc.html
+[2021-02-25 09:24:11,043] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429348_2_fastqc.html
+[2021-02-25 09:24:11,044] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429282_1_fastqc.html
+[2021-02-25 09:24:11,045] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486738_2_fastqc.html
+[2021-02-25 09:24:11,047] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452358_1_fastqc.html
+[2021-02-25 09:24:11,048] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR1912635_1_fastqc.html
+[2021-02-25 09:24:11,048] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3466175_1_fastqc.html
+[2021-02-25 09:24:11,053] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6451282_2_fastqc.html
+[2021-02-25 09:24:11,053] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7026303_1_fastqc.html
+[2021-02-25 09:24:11,053] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486744_1_fastqc.html
+[2021-02-25 09:24:11,054] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12519146_2_fastqc.html
+[2021-02-25 09:24:11,055] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7724616_2_fastqc.html
+[2021-02-25 09:24:11,055] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11347836_2_fastqc.html
+[2021-02-25 09:24:11,056] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1314258_1_fastqc.html
+[2021-02-25 09:24:11,057] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR2935635_2_fastqc.html
+[2021-02-25 09:24:11,057] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1508893_2_fastqc.html
+[2021-02-25 09:24:11,058] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12269846_2_fastqc.html
+[2021-02-25 09:24:11,060] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620946_1_fastqc.html
+[2021-02-25 09:24:11,061] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429282_2_fastqc.html
+[2021-02-25 09:24:11,061] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486738_1_fastqc.html
+[2021-02-25 09:24:11,061] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486737_2_fastqc.html
+[2021-02-25 09:24:11,062] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6455974_2_fastqc.html
+[2021-02-25 09:24:11,062] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13362842_2_fastqc.html
+[2021-02-25 09:24:11,063] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665503_1_fastqc.html
+[2021-02-25 09:24:11,064] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13000307_2_fastqc.html
+[2021-02-25 09:24:11,065] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665524_1_fastqc.html
+[2021-02-25 09:24:11,066] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7870871_1_fastqc.html
+[2021-02-25 09:24:11,067] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6515383_1_fastqc.html
+[2021-02-25 09:24:11,068] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11727691_1_fastqc.html
+[2021-02-25 09:24:11,068] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13195688_2_fastqc.html
+[2021-02-25 09:24:11,070] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10751454_2_fastqc.html
+[2021-02-25 09:24:11,072] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9113462_1_fastqc.html
+[2021-02-25 09:24:11,072] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486743_1_fastqc.html
+[2021-02-25 09:24:11,075] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204375_2_fastqc.html
+[2021-02-25 09:24:11,076] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: DRR075633_1_fastqc.html
+[2021-02-25 09:24:11,076] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12204412_2_fastqc.html
+[2021-02-25 09:24:11,077] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7284874_1_fastqc.html
+[2021-02-25 09:24:11,080] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12902581_1_fastqc.html
+[2021-02-25 09:24:11,080] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452442_1_fastqc.html
+[2021-02-25 09:24:11,082] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429309_1_fastqc.html
+[2021-02-25 09:24:11,084] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3574326_2_fastqc.html
+[2021-02-25 09:24:11,086] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR712516_2_fastqc.html
+[2021-02-25 09:24:11,086] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452358_2_fastqc.html
+[2021-02-25 09:24:11,090] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11068097_2_fastqc.html
+[2021-02-25 09:24:11,091] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13000507_2_fastqc.html
+[2021-02-25 09:24:11,093] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6065849_2_fastqc.html
+[2021-02-25 09:24:11,093] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6067099_2_fastqc.html
+[2021-02-25 09:24:11,094] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6065798_2_fastqc.html
+[2021-02-25 09:24:11,094] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12903893_2_fastqc.html
+[2021-02-25 09:24:11,097] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11495756_1_fastqc.html
+[2021-02-25 09:24:11,098] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12769881_2_fastqc.html
+[2021-02-25 09:24:11,099] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4131613_2_fastqc.html
+[2021-02-25 09:24:11,099] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12009569_2_fastqc.html
+[2021-02-25 09:24:11,100] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452375_1_fastqc.html
+[2021-02-25 09:24:11,100] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR3393084_2_fastqc.html
+[2021-02-25 09:24:11,101] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620921_1_fastqc.html
+[2021-02-25 09:24:11,102] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12072638_1_fastqc.html
+[2021-02-25 09:24:11,103] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR712691_2_fastqc.html
+[2021-02-25 09:24:11,105] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6892789_2_fastqc.html
+[2021-02-25 09:24:11,106] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10173687_2_fastqc.html
+[2021-02-25 09:24:11,107] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9113487_2_fastqc.html
+[2021-02-25 09:24:11,108] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR11486736_1_fastqc.html
+[2021-02-25 09:24:11,109] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10006051_1_fastqc.html
+[2021-02-25 09:24:11,109] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR7870887_2_fastqc.html
+[2021-02-25 09:24:11,110] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12569950_1_fastqc.html
+[2021-02-25 09:24:11,112] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665524_2_fastqc.html
+[2021-02-25 09:24:11,113] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5714074_1_fastqc.html
+[2021-02-25 09:24:11,115] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620950_2_fastqc.html
+[2021-02-25 09:24:11,116] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429277_2_fastqc.html
+[2021-02-25 09:24:11,116] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR13195707_2_fastqc.html
+[2021-02-25 09:24:11,117] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR3951679_2_fastqc.html
+[2021-02-25 09:24:11,117] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: ERR4452361_1_fastqc.html
+[2021-02-25 09:24:11,119] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR12570014_1_fastqc.html
+[2021-02-25 09:24:11,119] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10665491_2_fastqc.html
+[2021-02-25 09:24:11,121] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR10429277_1_fastqc.html
+[2021-02-25 09:24:11,121] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR6455967_1_fastqc.html
+[2021-02-25 09:24:11,122] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR9620892_1_fastqc.html
+[2021-02-25 09:24:11,123] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1314503_2_fastqc.html
+[2021-02-25 09:24:11,124] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR5153285_1_fastqc.html
+[2021-02-25 09:24:44,795] multiqc.plots.bargraph                             [DEBUG  ]  Using matplotlib version 3.1.1
+[2021-02-25 09:24:44,796] multiqc.plots.linegraph                            [DEBUG  ]  Using matplotlib version 3.1.1
+[2021-02-25 09:24:44,797] multiqc                                            [DEBUG  ]  No samples found: custom_content
+[2021-02-25 09:24:44,800] multiqc                                            [DEBUG  ]  No samples found: conpair
+[2021-02-25 09:24:44,804] multiqc                                            [DEBUG  ]  No samples found: peddy
+[2021-02-25 09:24:44,806] multiqc                                            [DEBUG  ]  No samples found: methylQA
+[2021-02-25 09:24:44,808] multiqc                                            [DEBUG  ]  No samples found: phantompeakqualtools
+[2021-02-25 09:24:44,813] multiqc                                            [DEBUG  ]  No samples found: qualimap
+[2021-02-25 09:24:44,816] multiqc                                            [DEBUG  ]  No samples found: preseq
+[2021-02-25 09:24:44,822] multiqc                                            [DEBUG  ]  No samples found: quast
+[2021-02-25 09:24:44,824] multiqc                                            [DEBUG  ]  No samples found: qorts
+[2021-02-25 09:24:44,826] multiqc                                            [DEBUG  ]  No samples found: rna_seqc
+[2021-02-25 09:24:44,829] multiqc                                            [DEBUG  ]  No samples found: rsem
+[2021-02-25 09:24:44,833] multiqc                                            [DEBUG  ]  No samples found: rseqc
+[2021-02-25 09:24:44,836] multiqc                                            [DEBUG  ]  No samples found: busco
+[2021-02-25 09:24:44,840] multiqc                                            [DEBUG  ]  No samples found: goleft_indexcov
+[2021-02-25 09:24:44,842] multiqc                                            [DEBUG  ]  No samples found: disambiguate
+[2021-02-25 09:24:44,845] multiqc                                            [DEBUG  ]  No samples found: supernova
+[2021-02-25 09:24:44,849] multiqc                                            [DEBUG  ]  No samples found: deeptools
+[2021-02-25 09:24:44,852] multiqc                                            [DEBUG  ]  No samples found: sargasso
+[2021-02-25 09:24:44,854] multiqc                                            [DEBUG  ]  No samples found: verifybamid
+[2021-02-25 09:24:44,857] multiqc                                            [DEBUG  ]  No samples found: mirtrace
+[2021-02-25 09:24:44,860] multiqc                                            [DEBUG  ]  No samples found: happy
+[2021-02-25 09:24:44,863] multiqc                                            [DEBUG  ]  No samples found: homer
+[2021-02-25 09:24:44,866] multiqc                                            [DEBUG  ]  No samples found: macs2
+[2021-02-25 09:24:44,868] multiqc                                            [DEBUG  ]  No samples found: theta2
+[2021-02-25 09:24:44,871] multiqc                                            [DEBUG  ]  No samples found: snpeff
+[2021-02-25 09:24:44,874] multiqc                                            [DEBUG  ]  No samples found: gatk
+[2021-02-25 09:24:44,877] multiqc                                            [DEBUG  ]  No samples found: htseq
+[2021-02-25 09:24:44,880] multiqc                                            [DEBUG  ]  No samples found: bcftools
+[2021-02-25 09:24:44,883] multiqc                                            [DEBUG  ]  No samples found: featureCounts
+[2021-02-25 09:24:44,885] multiqc                                            [DEBUG  ]  No samples found: fgbio
+[2021-02-25 09:24:44,888] multiqc                                            [DEBUG  ]  No samples found: dedup
+[2021-02-25 09:24:44,891] multiqc                                            [DEBUG  ]  No samples found: damageprofiler
+[2021-02-25 09:24:44,898] multiqc                                            [DEBUG  ]  No samples found: biobambam2
+[2021-02-25 09:24:44,901] multiqc                                            [DEBUG  ]  No samples found: mtnucratio
+[2021-02-25 09:24:44,903] multiqc                                            [DEBUG  ]  No samples found: picard
+[2021-02-25 09:24:44,905] multiqc                                            [DEBUG  ]  No samples found: prokka
+[2021-02-25 09:24:44,908] multiqc                                            [DEBUG  ]  No samples found: samblaster
+[2021-02-25 09:24:44,911] multiqc                                            [DEBUG  ]  No samples found: samtools
+[2021-02-25 09:24:44,914] multiqc                                            [DEBUG  ]  No samples found: sexdeterrmine
+[2021-02-25 09:24:44,917] multiqc                                            [DEBUG  ]  No samples found: bamtools
+[2021-02-25 09:24:44,919] multiqc                                            [DEBUG  ]  No samples found: jellyfish
+[2021-02-25 09:24:44,923] multiqc                                            [DEBUG  ]  No samples found: vcftools
+[2021-02-25 09:24:44,925] multiqc                                            [DEBUG  ]  No samples found: longranger
+[2021-02-25 09:24:44,928] multiqc                                            [DEBUG  ]  No samples found: stacks
+[2021-02-25 09:24:44,934] multiqc                                            [DEBUG  ]  No samples found: bbmap
+[2021-02-25 09:24:44,936] multiqc                                            [DEBUG  ]  No samples found: bismark
+[2021-02-25 09:24:44,939] multiqc                                            [DEBUG  ]  No samples found: biscuit
+[2021-02-25 09:24:44,941] multiqc                                            [DEBUG  ]  No samples found: hicexplorer
+[2021-02-25 09:24:44,944] multiqc                                            [DEBUG  ]  No samples found: hicup
+[2021-02-25 09:24:44,946] multiqc                                            [DEBUG  ]  No samples found: hicpro
+[2021-02-25 09:24:44,948] multiqc                                            [DEBUG  ]  No samples found: salmon
+[2021-02-25 09:24:44,951] multiqc                                            [DEBUG  ]  No samples found: kallisto
+[2021-02-25 09:24:44,954] multiqc                                            [DEBUG  ]  No samples found: slamdunk
+[2021-02-25 09:24:44,956] multiqc                                            [DEBUG  ]  No samples found: star
+[2021-02-25 09:24:44,958] multiqc                                            [DEBUG  ]  No samples found: hisat2
+[2021-02-25 09:24:44,961] multiqc                                            [DEBUG  ]  No samples found: tophat
+[2021-02-25 09:24:44,964] multiqc                                            [DEBUG  ]  No samples found: bowtie2
+[2021-02-25 09:24:44,966] multiqc                                            [DEBUG  ]  No samples found: bowtie1
+[2021-02-25 09:24:44,968] multiqc                                            [DEBUG  ]  No samples found: kat
+[2021-02-25 09:24:44,970] multiqc                                            [DEBUG  ]  No samples found: leehom
+[2021-02-25 09:24:44,973] multiqc                                            [DEBUG  ]  No samples found: adapterRemoval
+[2021-02-25 09:24:44,976] multiqc                                            [DEBUG  ]  No samples found: clipandmerge
+[2021-02-25 09:24:44,978] multiqc                                            [DEBUG  ]  No samples found: cutadapt
+[2021-02-25 09:24:44,980] multiqc                                            [DEBUG  ]  No samples found: flexbar
+[2021-02-25 09:24:44,983] multiqc                                            [DEBUG  ]  No samples found: trimmomatic
+[2021-02-25 09:24:44,986] multiqc                                            [DEBUG  ]  No samples found: skewer
+[2021-02-25 09:24:44,988] multiqc                                            [DEBUG  ]  No samples found: sortmerna
+[2021-02-25 09:24:44,990] multiqc                                            [DEBUG  ]  No samples found: biobloomtools
+[2021-02-25 09:24:44,993] multiqc                                            [DEBUG  ]  No samples found: fastq_screen
+[2021-02-25 09:24:44,996] multiqc                                            [DEBUG  ]  No samples found: afterqc
+[2021-02-25 09:24:44,999] multiqc                                            [DEBUG  ]  No samples found: fastp
+[2021-02-25 09:24:50,556] multiqc.modules.fastqc.fastqc                      [INFO   ]  Found 598 reports
+[2021-02-25 09:25:22,274] multiqc                                            [DEBUG  ]  No samples found: minionqc
+[2021-02-25 09:25:22,277] multiqc                                            [DEBUG  ]  No samples found: mosdepth
+[2021-02-25 09:25:22,280] multiqc                                            [DEBUG  ]  No samples found: clusterflow
+[2021-02-25 09:25:22,283] multiqc                                            [DEBUG  ]  No samples found: bcl2fastq
+[2021-02-25 09:25:22,286] multiqc                                            [DEBUG  ]  No samples found: interop
+[2021-02-25 09:25:22,288] multiqc                                            [DEBUG  ]  No samples found: flash
+[2021-02-25 09:25:22,291] multiqc                                            [DEBUG  ]  No samples found: seqyclean
+[2021-02-25 09:25:22,294] multiqc.plots.table                                [DEBUG  ]  Plotting beeswarm instead of table, 598 samples
+[2021-02-25 09:25:22,298] multiqc                                            [INFO   ]  Compressing plot data
+[2021-02-25 09:25:22,518] multiqc                                            [INFO   ]  Report      : multiqc_report.html
+[2021-02-25 09:25:22,519] multiqc                                            [INFO   ]  Data        : multiqc_data
+[2021-02-25 09:25:22,520] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/multiqc_data.json' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,529] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/multiqc_sources.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,532] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/mqc_fastqc_adapter_content_plot_1.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,536] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/mqc_fastqc_overrepresented_sequencesi_plot_1.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,539] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/mqc_fastqc_sequence_duplication_levels_plot_1.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,551] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/mqc_fastqc_sequence_length_distribution_plot_1.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,554] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/mqc_fastqc_per_base_n_content_plot_1.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,558] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/mqc_fastqc_per_sequence_gc_content_plot_Counts.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,563] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/mqc_fastqc_per_sequence_gc_content_plot_Percentages.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,569] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/mqc_fastqc_per_sequence_quality_scores_plot_1.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,572] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/mqc_fastqc_per_base_sequence_quality_plot_1.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,577] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/mqc_fastqc_sequence_counts_plot_1.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,580] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/multiqc_fastqc.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,584] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpul5a50fd/multiqc_data/multiqc_qualimap_bamqc_genome_results.txt' to '/lustre/scratch118/infgen/team216/jl25/esco/st167/fastqc/multiqc_data'
+[2021-02-25 09:25:22,694] multiqc                                            [INFO   ]  MultiQC complete

@@ -1,0 +1,530 @@
+IQ-TREE multicore version 1.6.10 for Linux 64-bit built Mar 21 2019
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    node-10-2-2 (AVX512, FMA3, 754 GB RAM)
+Command: iqtree -s clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta -nt AUTO -ntmax 16 -mem 32G -m GTR+F+ASC+R5 -bb 1000
+Seed:    900233 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Feb 25 22:13:51 2021
+Kernel:  AVX+FMA - auto-detect threads (64 CPU cores detected)
+
+Reading alignment file clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta ... Fasta format detected
+Alignment most likely contains DNA/RNA sequences
+Alignment has 318 sequences with 42502 columns, 27525 distinct patterns
+3291 parsimony-informative, 39211 singleton sites, 0 constant sites
+WARNING: Some sequence names are changed as follows:
+26141_1#138 -> 26141_1_138
+26141_1#179 -> 26141_1_179
+26141_1#182 -> 26141_1_182
+26141_1#187 -> 26141_1_187
+26141_1#207 -> 26141_1_207
+26141_1#218 -> 26141_1_218
+26141_1#236 -> 26141_1_236
+26141_1#250 -> 26141_1_250
+26141_1#251 -> 26141_1_251
+26141_1#260 -> 26141_1_260
+26141_1#295 -> 26141_1_295
+26141_1#297 -> 26141_1_297
+26141_1#298 -> 26141_1_298
+28099_1#102 -> 28099_1_102
+28099_1#132 -> 28099_1_132
+28099_1#148 -> 28099_1_148
+28099_1#176 -> 28099_1_176
+28099_1#203 -> 28099_1_203
+28099_1#209 -> 28099_1_209
+28099_1#230 -> 28099_1_230
+28099_1#282 -> 28099_1_282
+28099_1#301 -> 28099_1_301
+28099_1#315 -> 28099_1_315
+28099_1#317 -> 28099_1_317
+28099_1#346 -> 28099_1_346
+28099_1#35 -> 28099_1_35
+28099_1#353 -> 28099_1_353
+28099_1#41 -> 28099_1_41
+28099_1#47 -> 28099_1_47
+28099_1#94 -> 28099_1_94
+28099_2#130 -> 28099_2_130
+28099_2#210 -> 28099_2_210
+28099_2#259 -> 28099_2_259
+28099_2#291 -> 28099_2_291
+28099_2#304 -> 28099_2_304
+28099_2#48 -> 28099_2_48
+28099_2#84 -> 28099_2_84
+
+                      Gap/Ambiguity  Composition  p-value
+   1  26141_1_138             4.68%    passed     16.89%
+   2  26141_1_179             5.11%    passed     58.21%
+   3  26141_1_182             4.16%    passed     21.16%
+   4  26141_1_187             4.16%    passed     25.03%
+   5  26141_1_207             4.16%    passed     21.19%
+   6  26141_1_218             4.20%    passed     27.04%
+   7  26141_1_236             3.72%    passed     21.81%
+   8  26141_1_250             3.32%    passed     24.22%
+   9  26141_1_251             3.27%    passed     20.83%
+  10  26141_1_260            37.61%    failed      0.00%
+  11  26141_1_295             4.13%    passed     21.81%
+  12  26141_1_297             3.72%    passed     22.48%
+  13  26141_1_298             3.33%    passed     21.09%
+  14  28099_1_102             4.05%    passed     22.11%
+  15  28099_1_132             4.13%    passed     21.31%
+  16  28099_1_148            12.43%    passed     99.34%
+  17  28099_1_176             4.06%    passed     21.00%
+  18  28099_1_203             4.01%    passed     26.38%
+  19  28099_1_209             4.01%    passed     24.97%
+  20  28099_1_230             4.01%    passed     23.77%
+  21  28099_1_282             4.03%    passed     20.30%
+  22  28099_1_301             4.08%    passed     23.30%
+  23  28099_1_315             3.72%    passed     23.69%
+  24  28099_1_317             3.96%    passed     26.76%
+  25  28099_1_346             4.23%    passed     27.37%
+  26  28099_1_35              4.10%    passed     21.17%
+  27  28099_1_353             4.04%    passed     21.77%
+  28  28099_1_41             35.73%    failed      0.00%
+  29  28099_1_47              3.78%    passed     24.33%
+  30  28099_1_94             66.75%    failed      0.00%
+  31  28099_2_130             4.00%    passed     21.96%
+  32  28099_2_210             4.07%    passed     23.17%
+  33  28099_2_259             4.78%    passed     25.80%
+  34  28099_2_291             4.11%    passed     22.74%
+  35  28099_2_304             4.92%    passed     29.39%
+  36  28099_2_48              3.86%    passed     24.74%
+  37  28099_2_84              4.15%    passed     27.03%
+  38  DRR061467_filtered     13.18%    passed     99.49%
+  39  DRR075612_filtered     13.31%    passed     99.84%
+  40  DRR075620_filtered     15.87%    passed     99.02%
+  41  DRR075623_filtered     16.24%    passed     98.32%
+  42  DRR075633_filtered     12.96%    passed     98.70%
+  43  DRR075640_filtered     15.10%    passed     99.53%
+  44  DRR102586_filtered     12.51%    passed     99.82%
+  45  ERR1195513_filtered    14.47%    passed     96.77%
+  46  ERR1263946_filtered    12.77%    passed     99.13%
+  47  ERR1263947_filtered    12.71%    passed     99.15%
+  48  ERR1263948_filtered    12.89%    passed     99.71%
+  49  ERR1263949_filtered    13.23%    passed     99.80%
+  50  ERR1263950_filtered    12.98%    passed     99.62%
+  51  ERR1912634_filtered    12.27%    passed     99.98%
+  52  ERR1912635_filtered    12.27%    passed     99.97%
+  53  ERR2203409_filtered    13.03%    passed     99.99%
+  54  ERR2796921_filtered    13.38%    passed     97.95%
+  55  ERR2935635_filtered    14.28%    passed     99.43%
+  56  ERR2935754_filtered    14.43%    passed     96.78%
+  57  ERR3333478_filtered    13.08%    passed     96.37%
+  58  ERR3333495_filtered    12.33%    passed     99.51%
+  59  ERR3375634_filtered    12.13%    passed     99.97%
+  60  ERR3375690_filtered    12.11%    passed     99.94%
+  61  ERR3393084_filtered    12.18%    passed     98.41%
+  62  ERR3393396_filtered    12.39%    passed     99.63%
+  63  ERR4095062_filtered    16.29%    passed     88.99%
+  64  ERR4131613_filtered    12.42%    passed     99.88%
+  65  ERR4426043_filtered    12.68%    passed     95.66%
+  66  ERR4452356_filtered     3.52%    passed     19.82%
+  67  ERR4452358_filtered    13.47%    passed     99.76%
+  68  ERR4452361_filtered    13.45%    passed     96.38%
+  69  ERR4452375_filtered    13.65%    passed     95.90%
+  70  ERR4452380_filtered     4.36%    passed     19.65%
+  71  ERR4452442_filtered    14.03%    passed     98.27%
+  72  ERR4554412_filtered     3.65%    passed     26.40%
+  73  ERR712515_filtered     12.50%    passed     99.96%
+  74  ERR712516_filtered     12.48%    passed     99.81%
+  75  ERR712617_filtered     12.16%    passed     99.51%
+  76  ERR712662_filtered     12.92%    passed     99.98%
+  77  ERR712691_filtered     13.25%    passed     99.93%
+  78  ERR712769_filtered     12.60%    passed     99.56%
+  79  SRR10006051_filtered   37.04%    failed      0.00%
+  80  SRR10006055_filtered   19.67%    failed      0.00%
+  81  SRR10006056_filtered   15.75%    passed     10.63%
+  82  SRR10006058_filtered   15.77%    failed      3.55%
+  83  SRR10006059_filtered   21.02%    failed      1.06%
+  84  SRR10006105_filtered   35.89%    failed      0.00%
+  85  SRR10006107_filtered   34.39%    failed      0.00%
+  86  SRR10006108_filtered   38.29%    failed      0.00%
+  87  SRR10094627_filtered   15.72%    passed     97.76%
+  88  SRR10103880_filtered   13.43%    passed     99.81%
+  89  SRR10115845_filtered   15.42%    passed     48.03%
+  90  SRR10126951_filtered    9.77%    passed     93.66%
+  91  SRR10163891_filtered   12.68%    passed     95.73%
+  92  SRR10173687_filtered   15.78%    passed     96.48%
+  93  SRR10207198_filtered   12.33%    passed     98.45%
+  94  SRR10230871_filtered   22.28%    passed     46.19%
+  95  SRR10235879_filtered   12.30%    passed     99.21%
+  96  SRR10272840_filtered   13.19%    passed     99.42%
+  97  SRR10286137_filtered   12.28%    passed     99.48%
+  98  SRR10286349_filtered   23.04%    passed     51.67%
+  99  SRR10429277_filtered   13.31%    passed     99.45%
+ 100  SRR10429282_filtered   13.41%    passed     98.17%
+ 101  SRR10429295_filtered   13.20%    passed     99.02%
+ 102  SRR10429307_filtered   13.67%    passed     99.28%
+ 103  SRR10429309_filtered   13.74%    passed     99.32%
+ 104  SRR10429313_filtered   13.29%    passed     99.16%
+ 105  SRR10429344_filtered   13.81%    passed     99.60%
+ 106  SRR10429348_filtered   13.66%    passed     99.83%
+ 107  SRR10429356_filtered   13.76%    passed     98.64%
+ 108  SRR10429372_filtered   13.60%    passed     99.79%
+ 109  SRR10512503_filtered   13.19%    passed     99.35%
+ 110  SRR10512508_filtered   13.13%    passed     98.59%
+ 111  SRR10512537_filtered   13.20%    passed     99.09%
+ 112  SRR10512539_filtered   13.07%    passed     98.61%
+ 113  SRR10512969_filtered    3.20%    passed     23.21%
+ 114  SRR10525639_filtered    3.22%    passed     24.30%
+ 115  SRR10665491_filtered   13.41%    passed     99.05%
+ 116  SRR10665499_filtered   13.47%    passed     99.37%
+ 117  SRR10665503_filtered   13.16%    passed     98.86%
+ 118  SRR10665505_filtered   13.25%    passed     99.34%
+ 119  SRR10665510_filtered   13.51%    passed     99.34%
+ 120  SRR10665516_filtered   13.25%    passed     99.62%
+ 121  SRR10665517_filtered   13.08%    passed     98.60%
+ 122  SRR10665523_filtered   13.34%    passed     99.52%
+ 123  SRR10665524_filtered   13.41%    passed     99.53%
+ 124  SRR10665525_filtered   13.40%    passed     99.72%
+ 125  SRR10665526_filtered   13.34%    passed     99.16%
+ 126  SRR10665529_filtered   13.10%    passed     98.73%
+ 127  SRR10749233_filtered   13.00%    passed     97.92%
+ 128  SRR10750973_filtered   13.28%    passed     98.94%
+ 129  SRR10751453_filtered   13.04%    passed     97.83%
+ 130  SRR10751454_filtered   13.05%    passed     97.47%
+ 131  SRR10752090_filtered   13.19%    passed     99.52%
+ 132  SRR10761131_filtered    3.21%    passed     15.80%
+ 133  SRR11038969_filtered    2.61%    failed      0.00%
+ 134  SRR11038970_filtered   17.52%    passed     84.36%
+ 135  SRR11068097_filtered   12.87%    passed     98.20%
+ 136  SRR11341626_filtered   13.24%    passed     82.14%
+ 137  SRR11454062_filtered    4.20%    passed     23.44%
+ 138  SRR11454126_filtered   12.94%    passed     99.84%
+ 139  SRR11454163_filtered   13.25%    passed     99.78%
+ 140  SRR11454178_filtered   12.71%    passed     99.74%
+ 141  SRR11454284_filtered   22.10%    passed     39.64%
+ 142  SRR11454299_filtered   12.30%    passed     99.73%
+ 143  SRR11454319_filtered   19.58%    passed     77.73%
+ 144  SRR11454384_filtered   12.18%    passed     99.74%
+ 145  SRR11486735_filtered   13.83%    passed     99.89%
+ 146  SRR11486736_filtered   13.24%    passed     99.11%
+ 147  SRR11486737_filtered   13.78%    passed     99.88%
+ 148  SRR11486738_filtered   13.17%    passed     99.06%
+ 149  SRR11486742_filtered   13.19%    passed     99.08%
+ 150  SRR11486743_filtered   13.30%    passed     99.11%
+ 151  SRR11486744_filtered   13.36%    passed     99.51%
+ 152  SRR11495756_filtered   13.23%    passed     99.93%
+ 153  SRR11727679_filtered   14.63%    passed     98.81%
+ 154  SRR11727691_filtered   18.23%    passed     67.93%
+ 155  SRR11727696_filtered   13.62%    passed     98.99%
+ 156  SRR11727698_filtered   14.02%    passed     90.25%
+ 157  SRR11727700_filtered   18.38%    passed     66.37%
+ 158  SRR11833408_filtered   13.12%    passed     94.11%
+ 159  SRR11903067_filtered   15.27%    passed     97.34%
+ 160  SRR12009569_filtered   12.94%    passed     97.92%
+ 161  SRR12009601_filtered   13.06%    passed     98.71%
+ 162  SRR12072617_filtered   12.83%    passed     98.89%
+ 163  SRR12072638_filtered   13.13%    passed     98.48%
+ 164  SRR12072648_filtered   18.36%    passed     68.27%
+ 165  SRR12204350_filtered   20.27%    passed     50.68%
+ 166  SRR12204352_filtered   14.54%    passed     91.64%
+ 167  SRR12204354_filtered   13.17%    passed     96.96%
+ 168  SRR12204355_filtered   13.22%    passed     95.67%
+ 169  SRR12204375_filtered   15.02%    passed     92.16%
+ 170  SRR12204378_filtered   13.26%    passed     94.78%
+ 171  SRR12204389_filtered   13.19%    passed     95.40%
+ 172  SRR12204390_filtered   13.58%    passed     94.51%
+ 173  SRR12204412_filtered   16.12%    passed     95.41%
+ 174  SRR12204417_filtered   16.92%    passed     86.78%
+ 175  SRR12204422_filtered   13.76%    passed     95.82%
+ 176  SRR12269846_filtered    7.13%    passed     60.51%
+ 177  SRR12352183_filtered   13.07%    passed     97.51%
+ 178  SRR12358935_filtered   18.45%    passed     66.93%
+ 179  SRR12462369_filtered   18.24%    passed     69.07%
+ 180  SRR12462373_filtered   18.26%    passed     65.80%
+ 181  SRR12508632_filtered    4.56%    passed     44.19%
+ 182  SRR12508892_filtered   13.64%    passed     98.94%
+ 183  SRR12509131_filtered   12.47%    passed     99.91%
+ 184  SRR12517447_filtered   14.32%    passed     99.63%
+ 185  SRR12517471_filtered   13.83%    passed     99.70%
+ 186  SRR12519146_filtered   18.42%    passed     63.93%
+ 187  SRR12569950_filtered   13.75%    passed     96.54%
+ 188  SRR12570014_filtered   13.01%    passed     96.61%
+ 189  SRR12570020_filtered   58.17%    failed      0.00%
+ 190  SRR12769881_filtered   12.82%    passed     98.11%
+ 191  SRR12902520_filtered   13.99%    passed     98.43%
+ 192  SRR12902538_filtered   13.16%    passed     99.15%
+ 193  SRR12902581_filtered   12.43%    passed     98.38%
+ 194  SRR12903819_filtered   18.82%    passed     71.47%
+ 195  SRR12903829_filtered   18.43%    passed     72.38%
+ 196  SRR12903833_filtered   18.31%    passed     68.51%
+ 197  SRR12903893_filtered   13.49%    passed     99.86%
+ 198  SRR12916664_filtered   18.31%    passed     65.46%
+ 199  SRR13000307_filtered   12.69%    passed     99.43%
+ 200  SRR13000311_filtered   12.73%    passed     99.66%
+ 201  SRR13000507_filtered    3.50%    passed     22.92%
+ 202  SRR13001310_filtered    4.71%    passed     28.41%
+ 203  SRR13001406_filtered    4.40%    passed     30.63%
+ 204  SRR13068788_filtered   13.19%    passed     95.16%
+ 205  SRR13080118_filtered   18.61%    passed     73.54%
+ 206  SRR13081910_filtered   14.07%    passed     99.85%
+ 207  SRR13085650_filtered   13.72%    passed     99.23%
+ 208  SRR1314258_filtered    13.84%    passed     72.92%
+ 209  SRR1314503_filtered    16.52%    passed     92.37%
+ 210  SRR13156974_filtered   13.28%    passed     98.44%
+ 211  SRR13158550_filtered   18.44%    passed     73.46%
+ 212  SRR13158578_filtered   18.42%    passed     64.15%
+ 213  SRR13195675_filtered   18.29%    passed     67.00%
+ 214  SRR13195682_filtered   18.26%    passed     67.94%
+ 215  SRR13195688_filtered   18.25%    passed     69.15%
+ 216  SRR13195690_filtered   18.29%    passed     66.53%
+ 217  SRR13195696_filtered   18.27%    passed     68.64%
+ 218  SRR13195707_filtered   18.25%    passed     68.74%
+ 219  SRR13362842_filtered   18.40%    passed     64.90%
+ 220  SRR13362843_filtered   18.35%    passed     69.30%
+ 221  SRR1508893_filtered    13.88%    passed     96.25%
+ 222  SRR1508895_filtered    13.87%    passed     96.50%
+ 223  SRR3095388_filtered    12.56%    passed     95.69%
+ 224  SRR3098780_filtered    12.28%    passed     99.93%
+ 225  SRR3466175_filtered    12.96%    passed     99.85%
+ 226  SRR3574326_filtered    13.22%    passed     96.77%
+ 227  SRR3929024_filtered    12.64%    passed     89.94%
+ 228  SRR3951679_filtered    12.96%    passed     99.85%
+ 229  SRR3957125_filtered    12.86%    passed     99.96%
+ 230  SRR4101520_filtered    12.86%    passed     99.96%
+ 231  SRR4294836_filtered    30.78%    failed      0.00%
+ 232  SRR4302082_filtered     5.12%    passed     26.72%
+ 233  SRR4302198_filtered    13.12%    passed     99.07%
+ 234  SRR4302246_filtered    13.58%    passed     99.88%
+ 235  SRR5024314_filtered    13.21%    passed     97.27%
+ 236  SRR5153281_filtered    13.01%    passed     96.75%
+ 237  SRR5153282_filtered    12.95%    passed     97.68%
+ 238  SRR5153283_filtered    12.88%    passed     96.71%
+ 239  SRR5153284_filtered    12.88%    passed     96.66%
+ 240  SRR5153285_filtered    12.87%    passed     96.76%
+ 241  SRR5153286_filtered    13.31%    passed     95.57%
+ 242  SRR5153287_filtered    14.06%    passed     98.63%
+ 243  SRR5153290_filtered    12.87%    passed     96.89%
+ 244  SRR5714074_filtered    12.98%    passed     94.70%
+ 245  SRR6065798_filtered    12.95%    passed     96.28%
+ 246  SRR6065849_filtered    12.94%    passed     92.91%
+ 247  SRR6067099_filtered    13.08%    passed     93.56%
+ 248  SRR6376588_filtered     2.91%    passed     24.41%
+ 249  SRR6451281_filtered    13.60%    passed     99.52%
+ 250  SRR6451282_filtered    13.71%    passed     99.69%
+ 251  SRR6451283_filtered    13.71%    passed     99.79%
+ 252  SRR6451284_filtered    14.05%    passed     99.76%
+ 253  SRR6451285_filtered    13.57%    passed     99.07%
+ 254  SRR6451286_filtered    13.76%    passed     99.96%
+ 255  SRR6455967_filtered    24.50%    passed     29.13%
+ 256  SRR6455974_filtered    13.22%    passed     98.71%
+ 257  SRR6455982_filtered    15.33%    passed     99.73%
+ 258  SRR6455985_filtered    18.59%    passed     93.92%
+ 259  SRR6474927_filtered    12.96%    passed     94.18%
+ 260  SRR6515382_filtered    12.99%    passed     96.11%
+ 261  SRR6515383_filtered    13.02%    passed     94.91%
+ 262  SRR6686320_filtered    13.16%    passed     95.43%
+ 263  SRR6703063_filtered    12.47%    passed     99.99%
+ 264  SRR6892789_filtered     8.64%    passed     90.68%
+ 265  SRR6892809_filtered    16.74%    passed     98.83%
+ 266  SRR6903163_filtered    12.65%    passed     99.80%
+ 267  SRR6942788_filtered    12.88%    passed     98.24%
+ 268  SRR7026303_filtered    13.50%    passed     99.75%
+ 269  SRR7042020_filtered    12.74%    passed     99.61%
+ 270  SRR7284874_filtered    12.75%    passed     99.56%
+ 271  SRR7500678_filtered    13.16%    passed     97.52%
+ 272  SRR7716571_filtered    12.95%    passed     95.84%
+ 273  SRR7716573_filtered    12.97%    passed     96.99%
+ 274  SRR7716574_filtered    13.27%    passed     93.87%
+ 275  SRR7716577_filtered    13.27%    passed     94.00%
+ 276  SRR7724616_filtered    13.43%    passed     95.34%
+ 277  SRR7724633_filtered    18.17%    passed     89.25%
+ 278  SRR7826035_filtered    13.94%    passed     99.38%
+ 279  SRR7827099_filtered    12.60%    passed     99.06%
+ 280  SRR7851090_filtered    19.71%    passed     24.39%
+ 281  SRR7869087_filtered    14.24%    passed     99.92%
+ 282  SRR7870867_filtered    13.19%    passed     97.88%
+ 283  SRR7870868_filtered    14.53%    passed     99.98%
+ 284  SRR7870871_filtered    14.62%    passed     99.98%
+ 285  SRR7870887_filtered    14.14%    passed     99.95%
+ 286  SRR7943899_filtered    13.03%    passed     96.17%
+ 287  SRR8071933_filtered    12.93%    passed     98.53%
+ 288  SRR8187980_filtered    12.18%    passed     99.74%
+ 289  SRR8397582_filtered     4.34%    passed     37.45%
+ 290  SRR8505979_filtered     4.60%    passed     28.08%
+ 291  SRR8505980_filtered     4.77%    passed     38.78%
+ 292  SRR8733918_filtered    12.45%    passed     98.64%
+ 293  SRR8737876_filtered    34.23%    failed      0.00%
+ 294  SRR8767398_filtered    14.29%    passed     99.76%
+ 295  SRR9051977_filtered     8.91%    passed     74.41%
+ 296  SRR9113455_filtered    13.46%    passed     94.60%
+ 297  SRR9113462_filtered    13.02%    passed     96.24%
+ 298  SRR9113487_filtered    14.01%    passed     97.15%
+ 299  SRR9301084_filtered    13.17%    passed     98.14%
+ 300  SRR9301096_filtered     4.53%    passed     35.59%
+ 301  SRR9615917_filtered    11.73%    passed     99.70%
+ 302  SRR9620883_filtered    13.52%    passed     99.79%
+ 303  SRR9620890_filtered    13.07%    passed     97.37%
+ 304  SRR9620892_filtered    13.23%    passed     98.86%
+ 305  SRR9620921_filtered    12.99%    passed     97.03%
+ 306  SRR9620924_filtered    13.33%    passed     98.44%
+ 307  SRR9620925_filtered    13.14%    passed     98.57%
+ 308  SRR9620940_filtered    13.18%    passed     98.51%
+ 309  SRR9620942_filtered    13.37%    passed     99.32%
+ 310  SRR9620946_filtered    13.08%    passed     98.31%
+ 311  SRR9620950_filtered    13.33%    passed     98.99%
+ 312  SRR9620952_filtered    13.34%    passed     99.30%
+ 313  SRR9620953_filtered    13.29%    passed     99.01%
+ 314  SRR9620960_filtered    13.27%    passed     99.20%
+ 315  SRR9620965_filtered    13.20%    passed     99.21%
+ 316  SRR9734793_filtered    13.48%    passed     99.58%
+ 317  SRR9988394_filtered    13.54%    passed     91.21%
+ 318  SRR9990246_filtered    16.04%    passed     94.83%
+WARNING: 2 sequences contain more than 50% gaps/ambiguity
+****  TOTAL                  13.32%  14 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: SRR8187980_filtered is identical to SRR11454384_filtered but kept for subsequent analysis
+NOTE: SRR3951679_filtered is identical to SRR3466175_filtered but kept for subsequent analysis
+NOTE: SRR4101520_filtered is identical to SRR3957125_filtered but kept for subsequent analysis
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 1.715 seconds
+Generating 1000 samples for ultrafast bootstrap (seed: 900233)...
+Ascertainment bias correction: 4 unobservable constant patterns
+
+NOTE: 1524 MB RAM (1 GB) is required!
+Measuring multi-threading efficiency up to 16 CPU cores
+4 trees examined
+Threads: 1 / Time: 17.968 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -447116
+Threads: 2 / Time: 9.750 sec / Speedup: 1.843 / Efficiency: 92% / LogL: -447116
+Threads: 3 / Time: 6.591 sec / Speedup: 2.726 / Efficiency: 91% / LogL: -447116
+Threads: 4 / Time: 6.194 sec / Speedup: 2.901 / Efficiency: 73% / LogL: -447116
+Threads: 5 / Time: 5.437 sec / Speedup: 3.305 / Efficiency: 66% / LogL: -447116
+Threads: 6 / Time: 4.759 sec / Speedup: 3.776 / Efficiency: 63% / LogL: -447116
+Threads: 7 / Time: 4.463 sec / Speedup: 4.026 / Efficiency: 58% / LogL: -447116
+Threads: 8 / Time: 5.501 sec / Speedup: 3.266 / Efficiency: 41% / LogL: -447116
+BEST NUMBER OF THREADS: 7
+
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -222264.457
+2. Current log-likelihood: -171686.454
+3. Current log-likelihood: -169845.993
+4. Current log-likelihood: -169747.193
+5. Current log-likelihood: -169684.397
+6. Current log-likelihood: -169627.894
+7. Current log-likelihood: -169570.580
+8. Current log-likelihood: -169520.314
+9. Current log-likelihood: -169468.916
+10. Current log-likelihood: -169426.258
+11. Current log-likelihood: -169389.018
+12. Current log-likelihood: -169349.563
+13. Current log-likelihood: -169320.687
+14. Current log-likelihood: -169296.940
+15. Current log-likelihood: -169270.616
+16. Current log-likelihood: -169253.365
+17. Current log-likelihood: -169239.571
+18. Current log-likelihood: -169228.352
+19. Current log-likelihood: -169219.325
+20. Current log-likelihood: -169212.038
+21. Current log-likelihood: -169206.114
+22. Current log-likelihood: -169194.017
+23. Current log-likelihood: -169189.192
+24. Current log-likelihood: -169185.377
+25. Current log-likelihood: -169182.243
+26. Current log-likelihood: -169179.653
+27. Current log-likelihood: -169177.509
+28. Current log-likelihood: -169175.728
+29. Current log-likelihood: -169174.247
+30. Current log-likelihood: -169173.013
+31. Current log-likelihood: -169171.980
+32. Current log-likelihood: -169171.121
+33. Current log-likelihood: -169170.406
+34. Current log-likelihood: -169169.807
+35. Current log-likelihood: -169169.299
+36. Current log-likelihood: -169168.879
+37. Current log-likelihood: -169168.524
+38. Current log-likelihood: -169168.319
+Optimal log-likelihood: -169168.134
+Rate parameters:  A-C: 1.08351  A-G: 4.71578  A-T: 1.09674  C-G: 0.47025  C-T: 4.57483  G-T: 1.00000
+Base frequencies:  A: 0.227  C: 0.269  G: 0.272  T: 0.232
+Site proportion and rates:  (0.219,0.840) (0.299,0.840) (0.302,0.840) (0.180,0.841) (0.001,283.331)
+Parameters optimization took 38 rounds (682.230 sec)
+Computing ML distances based on estimated model parameters... 89.572 sec
+Computing BIONJ tree...
+0.057 seconds
+Log-likelihood of BIONJ tree: -172099.867
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 196.320 second
+Computing log-likelihood of 98 initial trees ... 270.513 seconds
+Current best score: -169168.135
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -169092.508
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 2: -168536.025
+Iteration 10 / LogL: -168650.940 / Time: 0h:44m:55s
+Iteration 20 / LogL: -168686.082 / Time: 1h:9m:17s
+Finish initializing candidate tree set (20)
+Current best tree score: -168536.025 / CPU time: 3351.609
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Iteration 30 / LogL: -168550.145 / Time: 1h:14m:9s (3h:3m:29s left)
+Iteration 40 / LogL: -168723.222 / Time: 1h:18m:9s (2h:3m:51s left)
+Iteration 50 / LogL: -168573.906 / Time: 1h:21m:34s (1h:26m:18s left)
+Log-likelihood cutoff on original alignment: -168666.908
+Iteration 60 / LogL: -168580.192 / Time: 1h:25m:14s (1h:0m:30s left)
+Iteration 70 / LogL: -168646.200 / Time: 1h:29m:4s (0h:41m:11s left)
+Iteration 80 / LogL: -168562.220 / Time: 1h:32m:49s (0h:25m:46s left)
+Iteration 90 / LogL: -168592.882 / Time: 1h:36m:20s (0h:12m:57s left)
+Iteration 100 / LogL: -168559.344 / Time: 1h:40m:6s (0h:2m:1s left)
+Log-likelihood cutoff on original alignment: -168666.908
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.974
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+Iteration 110 / LogL: -168580.482 / Time: 1h:44m:0s (1h:25m:40s left)
+Iteration 120 / LogL: -168546.187 / Time: 1h:48m:6s (1h:12m:30s left)
+Iteration 130 / LogL: -168836.083 / Time: 1h:51m:51s (1h:0m:33s left)
+Iteration 140 / LogL: -168552.560 / Time: 1h:55m:45s (0h:49m:51s left)
+Iteration 150 / LogL: -168571.225 / Time: 1h:59m:48s (0h:40m:7s left)
+Log-likelihood cutoff on original alignment: -168666.908
+Iteration 160 / LogL: -168622.463 / Time: 2h:3m:50s (0h:31m:5s left)
+Iteration 170 / LogL: -168561.404 / Time: 2h:8m:11s (0h:22m:42s left)
+Iteration 180 / LogL: -168624.724 / Time: 2h:12m:8s (0h:14m:44s left)
+Iteration 190 / LogL: -168575.554 / Time: 2h:16m:4s (0h:7m:11s left)
+Iteration 200 / LogL: -168549.630 / Time: 2h:19m:58s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -168666.908
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.995
+TREE SEARCH COMPLETED AFTER 200 ITERATIONS / Time: 2h:19m:59s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -168536.025
+Optimal log-likelihood: -168536.021
+Rate parameters:  A-C: 1.08238  A-G: 4.70988  A-T: 1.09833  C-G: 0.47479  C-T: 4.58213  G-T: 1.00000
+Base frequencies:  A: 0.227  C: 0.269  G: 0.272  T: 0.232
+Site proportion and rates:  (0.229,0.798) (0.283,0.807) (0.282,0.809) (0.206,0.871) (0.000,499.358)
+Parameters optimization took 1 rounds (8.323 sec)
+BEST SCORE FOUND : -168536.021
+Creating bootstrap support values...
+Split supports printed to NEXUS file clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta.splits.nex
+Total tree length: 0.088
+
+Total number of iterations: 200
+CPU time used for tree search: 48348.645 sec (13h:25m:48s)
+Wall-clock time used for tree search: 7594.042 sec (2h:6m:34s)
+Total CPU time used: 53103.186 sec (14h:45m:3s)
+Total wall-clock time used: 8409.236 sec (2h:20m:9s)
+
+Computing bootstrap consensus tree...
+Reading input file clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta.splits.nex...
+318 taxa and 1527 splits.
+Consensus tree written to clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta.contree
+Reading input trees file clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta.contree
+Log-likelihood of consensus tree: -168617.085
+
+Analysis results written to: 
+  IQ-TREE report:                clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta.iqtree
+  Maximum-likelihood tree:       clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta.treefile
+  Likelihood distances:          clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta.mldist
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta.splits.nex
+  Consensus tree:                clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta.contree
+  Screen log file:               clean.full.filtered_polymorphic_sites.ref_removed.snpsites.fasta.log
+
+Date and Time: Fri Feb 26 00:34:36 2021
