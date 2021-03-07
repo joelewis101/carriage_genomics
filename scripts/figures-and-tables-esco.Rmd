@@ -24,6 +24,7 @@ library(patchwork)
 library(here)
 library(ggnewscale)
 library(scales)
+library(ggstance)
 ```
 
 ## Introduction
@@ -55,11 +56,15 @@ btESBL_sequence_sample_metadata %>%
       ),
     by = "lane"
   ) %>% 
-  select(accession, lane, supplier_name, pid, number_of_contigs, N50) -> t1
+  rename(date_of_collection = data_date) %>% 
+  select(accession, lane, supplier_name, pid, date_of_collection, number_of_contigs, N50) -> t1
 
 t1 %>% 
   kbl(caption = "Accession numbers and assembly statistics for included samples") %>% 
   kable_classic(full_width = FALSE)
+
+write_csv(t1, 
+          here("manuscript/esco/supp_tables/SUPP_T1_accession_numbers_and_metadata.csv"))
 
 ```
 
@@ -118,7 +123,7 @@ pgroup_mlst %>%
   group_by(ST) %>% 
   mutate(n = n(),
          ST = if_else(n ==1, "Other", ST)) %>% 
-#  filter(ST != "Novel") %>% 
+
   mutate(ST = if_else(!ST %in% c("Novel", "Other"), 
                       paste0("ST", ST), ST)) %>% 
   arrange(fct_infreq(ST)) %>% 
@@ -164,6 +169,8 @@ rownames(mlst_onehot) <- mlst_onehot$lane
   ylim(NA, 560)  + 
   annotate("text", x= 0.28, y =520, label = "Sequence Type") -> malawi_treeplot
 
+ malawi_treeplot
+ 
 ggsave(here("manuscript/esco/figures/SUPP_FIG_1_malawi_treeplot.svg"), malawi_treeplot, width = 9, height = 9)
 
 
@@ -250,11 +257,7 @@ amr.ariba %>%
   )) ->
   amr.ariba.long
 
-
-
-## AMR
-
-### Overall prevalence
+### plot prevalence ----------------------------------------
 
 
 amr.ariba.long %>% 
@@ -307,10 +310,281 @@ ggsave(filename = here("manuscript/esco/figures/FIG_2_amr_plot.svg"),plot = amrp
 
 ### Global phylogeny
 
-```{r global_phylogeny}
+```{r global_phylogeny, fig.height= 10, fig.width = 10}
+
+
+tree <- read.tree(here("data_processed/esco/global_tree/all_ESCO_core_snps.aln.treefile"))
+
+midpoint.root(tree) -> tree
+
+
+#### get metadata--------------------------------
+
+metadata <- read_csv(
+  here("data_processed/esco/global_tree/all_ESCO_metadata.csv"))
+
+accession_global <- read_csv(
+  here("data_raw/e_coli/global_accession_numbers.csv"))
+
+metadata %>% 
+  mutate(
+    Lane.Name = gsub("#", "_", Lane.Name ),
+    Sample = gsub("_aEPEC", "", Sample),
+    Sample = gsub("_","", Sample),
+    Sample = gsub("CFn", "", Sample),
+    Sample = gsub("sec","", Sample),
+    Sample = gsub("^G|R","", Sample),
+    Sample = gsub("-1|-1A|-2|-2A|-2B|-3A|-3B$","", Sample)) %>% 
+  left_join(
+  bind_rows(
+  read_csv(
+    "/Users/joelewis/Documents/Sanger/context_genomes/mentzer_metadata_table_blanks_rem.csv"
+  ) %>%
+    filter(!is.na(Designation)) %>%
+    transmute(Sample = Designation,
+              Year = isolation) %>% 
+    left_join(
+      read_csv(here("data_raw/e_coli/ilbnames.csv")) %>%  # coreect some names using
+                                                   # sanger pf data and 
+                                                   # accession numbers
+        transmute(Sample = `Sample Name`, 
+                  update_name = gsub("_", "", `Supplier Name`)),
+      by = "Sample") %>% 
+    mutate(Sample = if_else(!is.na(update_name), update_name, Sample)) %>% 
+    select(-update_name),
+  read_csv(
+    "/Users/joelewis/Documents/Sanger/context_genomes/ingle_gems_metadata.csv"
+  ) %>%
+    transmute(Sample = Isolate,
+              Year = `Year of Isolation`)
+  ),
+  by = "Sample") %>% 
+  left_join(btESBL_sequence_sample_metadata %>% 
+              transmute(Lane.Name = lane,
+                        dassim_year = year(data_date)),
+            by = "Lane.Name") %>% 
+  left_join(
+    read_csv(here("data_raw/e_coli/musicha_Ecoli_MetaData.csv")) %>% 
+      transmute(Lane.Name = gsub("#", "_", Lane),
+                musicha_year = Year),
+    by = "Lane.Name") %>% 
+  mutate(Year = as.numeric(
+    if_else(Year == "unknown", NA_character_, Year)
+  ),
+    Year = case_when(
+    grepl("DASSIM", study) ~ dassim_year,
+    study == "runchaeron" ~ 2015,
+    study == "musicha" ~ musicha_year,
+    TRUE ~ Year)
+  ) %>% 
+  left_join(
+    accession_global %>% 
+      transmute(Lane.Name = gsub("#", "_", `Lane Name`),
+                accession = `Lane Acc`),
+    by = "Lane.Name"
+  ) %>% 
+  select(-c(dassim_year, musicha_year)) ->
+           metadata
+
+metadata %>% 
+  transmute(
+    accession = accession,
+    lane = Lane.Name,
+    source = Source,
+    country = Country,
+    source = source,
+    year = Year,
+    study = case_when(
+      grepl("DASSIM", study) ~ "This study",
+      study == "ingle_GEMS" ~ "Ingle",
+      study == "mentzer" ~ "Mentzer",
+      study == "musicha" ~ "Musicha",
+      study == "runchaeron" ~ "Runchaeron")) %>%
+  filter(study != "This study")  %>% 
+  write_csv(
+          here("manuscript/esco/supp_tables/SUPP_T2_global_accession_numbers_and_metadata.csv"))
+
+
+metadata %>%
+  mutate(
+    Continent =
+      countrycode(
+        sourcevar = metadata$Country,
+        origin = "country.name",
+        destination = "un.region.name"
+      ),
+    Source = case_when(
+      Source %in% c("Canal",
+                    "Farm",
+                    "Untreated hospital sewage") ~ "Environment",
+      Source %in% c("Blood",
+                    "CSF",
+                    "Urine",
+                    "Pus" ,
+                    "Sputum")  ~ "Human - invasive",
+      Source %in% c("stool",
+                    "Stool" ,
+                    "RS") ~ "Human - stool"
+    ),
+    this_study = if_else(grepl("DASSIM", study), "Yes", NA_character_),
+    Country = case_when(
+      Country == "Malawi" & grepl("DASSIM", study) ~ "Malawi: this study",
+      Country == "Malawi" &
+        !grepl("DASSIM", study) ~ "Malawi: previous study",
+      TRUE ~ "Other"
+    )
+  ) %>%
+  as.data.frame() ->
+  metadata
 
 
 
+
+rownames(metadata) <- metadata$Lane.Name
+
+#### AMR --------------------------------
+
+bind_rows(
+  read.csv(
+    here(
+      "data_processed/esco/global_tree/srst2_summary_cleaned_pres_abs.csv"
+    )
+  ),
+  read_csv(
+    "~/Documents/PhD/Thesis/bookdown/chapter_7/amr/srst2_pres_abs.csv"
+  )
+) %>%
+  mutate(across(everything(), ~ replace_na(.x, 0)))  %>%
+  rename(sample = name) %>%
+  pivot_longer(-sample) %>%
+  filter(value == 1) %>%
+  left_join(select(bls, allele_name, class),
+            by = c("name" = "allele_name")) %>%
+  mutate(class = case_when(
+    grepl("CMY", name) ~ "ESBL/AmpC",
+    class == "ESBL" ~ "ESBL/AmpC",
+    TRUE ~ class
+  )) %>%
+  filter(class %in% c("ESBL/AmpC", "Carbapenemase") &
+           value == 1) %>%
+  pivot_wider(
+    id_cols = sample,
+    names_from = class,
+    values_from = class,
+    values_fn = length
+  ) %>%
+  mutate(
+    `ESBL/AmpC` = if_else(!is.na(`ESBL/AmpC`), "ESBL/AmpC", NA_character_),
+    Carbapenemase = if_else(!is.na(Carbapenemase), "Carbapenemase", NA_character_)
+  ) %>%
+  as.data.frame() -> amr_global
+
+rownames(amr_global) <- amr_global$sample
+
+# plot tree -------------------------------
+
+(
+  (
+    (
+      (
+        (ggtree(tree) %<+% select(metadata, Lane.Name, Country))   %>%
+          gheatmap(
+            select(metadata, Continent),
+            font.size = 4,
+            width = 0.03,
+            colnames_position = "top",
+            color = NA,
+            colnames_offset_y = 5,
+            colnames_angle = 90,
+            hjust = 0,
+            offset = 0.006
+          )  +
+          scale_fill_manual(
+            values = viridis_pal(option = "plasma")(5)[c(1, 2, 3)],
+            na.translate = FALSE,
+            name = "Continent"
+          ) +
+          new_scale_fill()
+      ) %>%
+        gheatmap(
+          select(metadata, Country),
+          font.size = 4,
+          width = 0.03,
+          colnames_position = "top",
+          color = NA,
+          colnames_offset_y = 5,
+          colnames_angle = 90,
+          hjust = 0,
+          offset = 0.003
+        ) +
+        scale_fill_manual(values = c(
+          viridis_pal(option = "cividis", )(4)[2:1],
+          "white"
+        ),
+        name = "Country") +
+        new_scale_fill()
+    )
+    %>%
+      gheatmap(
+        select(amr_global,-sample),
+        font.size = 3,
+        width = 0.06,
+        colnames_position = "top",
+        color = NA,
+        colnames_offset_y = 5,
+        colnames_angle = 90,
+        offset = 0.012,
+        hjust = 0
+      ) + scale_fill_manual(
+        values = viridis_pal(option = "magma")(5)[c(2, 3)],
+        na.translate = FALSE,
+        name = "Beta-\nlactamase",
+        guide = FALSE
+      ) +
+      new_scale_fill()
+  ) %>%
+    gheatmap(
+      select(metadata, `Year`),
+      font.size = 4,
+      width = 0.03,
+      colnames_position = "top",
+      color = NA,
+      colnames_offset_y = 5,
+      colnames_angle = 90,
+      hjust = 0
+    )  +
+    scale_fill_viridis_c(name = "Year")  +
+    new_scale_fill()
+) %>%
+  gheatmap(
+    select(metadata, Source),
+    font.size = 4,
+    width = 0.03,
+    colnames_position = "top",
+    color = NA,
+    colnames_offset_y = 5,
+    colnames_angle = 90,
+    hjust = 0,
+    offset = 0.009
+  ) + scale_fill_viridis_d(option = "magma", name = "Source") +
+  geom_cladelabel(node = 1351, label = "ST131", fontsize = 2.5, offset = -0.0009,
+                  offset.text = -0.0005) +
+  geom_cladelabel(node = 1864, label = "ST410", fontsize = 2.5,
+                  offset.text = -0.0005) +
+  geom_cladelabel(node = 2020, label = "ST167", fontsize = 2.5,
+                  offset.text = -0.0005) +
+  geom_treescale(x = 0.04, y = 1200, offset = 10) +
+  ylim(NA, 1500) -> global_tree_plot
+
+ggsave(here("manuscript/esco/figures/FIG_3_global_tree_plot.svg"), 
+       global_tree_plot, width = 8, height = 12)
+
+ggsave(here("manuscript/esco/figures/FIG_3_global_tree_plot.pdf"), 
+       global_tree_plot, width = 8, height = 12)
+
+
+global_tree_plot
+  
 
 ```
 
@@ -370,6 +644,16 @@ st167_metadata %>%
   rename(Year = `Collection Year`) %>% 
   as.data.frame() -> st167_metadata
 
+st167_metadata %>% 
+  filter(Country != "Malawi") %>% 
+  transmute(accession = accession,
+            source = `Source Niche`,
+            country = Country,
+            year = Year) %>% 
+  write_csv(here("manuscript/esco/supp_tables/SUPP_T3_st167_accession_numbers_and_metadata.csv"))
+            
+            
+
 st167_metadata$malawi <- st167_metadata$Country == "Malawi"
 
 st167_metadata$Continent <- 
@@ -380,6 +664,7 @@ st167_metadata$Continent <-
   )
 
 rownames(st167_metadata) <- st167_metadata$accession
+
 
 
 amr.ariba <- read_csv(here("data_processed/esco/st167/ariba/st167_ariba_srst2_summary.csv"))
@@ -485,7 +770,9 @@ rownames(esbl_cpe.ariba) <- esbl_cpe.ariba$sample
 st167_globaltree_plot
 
 ggsave(here("manuscript/esco/figures/FIG_4_st167_treeplot.svg"),
-       st167_globaltree_plot, width = 9, height = 10)
+       st167_globaltree_plot, width = 9.5, height = 10)
+ggsave(here("manuscript/esco/figures/FIG_4_st167_treeplot.pdf"),
+       st167_globaltree_plot, width = 9.5, height = 10)
 
 ```
 
@@ -549,6 +836,14 @@ st410_metadata %>%
   rename(
     Year = `Collection Year`) %>% 
   as.data.frame() -> st410_metadata
+
+st410_metadata %>% 
+  filter(Country != "Malawi") %>% 
+  transmute(accession = accession,
+            source = `Source Niche`,
+            country = Country,
+            year = Year) %>% 
+  write_csv(here("manuscript/esco/supp_tables/SUPP_T4_st410_accession_numbers_and_metadata.csv"))
 
 st410_metadata$malawi <- st410_metadata$Country == "Malawi"
 
@@ -675,7 +970,10 @@ rownames(esbl_cpe.ariba410) <- esbl_cpe.ariba410$sample
   )  -> st410_globaltree_plot
 
 ggsave(here("manuscript/esco/figures/FIG_5_st410_treeplot.svg"),
-       st410_globaltree_plot, width = 12, height = 10)
+       st410_globaltree_plot, width = 12, height = 14)
+
+ggsave(here("manuscript/esco/figures/FIG_5_st410_treeplot.pdf"),
+       st410_globaltree_plot, width = 12, height = 14)
 
 st410_globaltree_plot
 
@@ -757,6 +1055,143 @@ esbl_cpe.ariba410 %>%
   ggsave(here("manuscript/esco/figures/FIG_6_st410_treeplot.svg"),
        st410_subtree_plot, width = 7, height = 6)
 
+  ggsave(here("manuscript/esco/figures/FIG_6_st410_treeplot.pdf"),
+       st410_subtree_plot, width = 7, height = 6)
+  
 st410_subtree_plot
   
+```
+
+### ST410 - mapping to plasmid mapped back to phylogeny
+
+```{r plasmid_mapping, fig.width=7, fig.height=6}
+
+ 
+bind_rows(
+  read_csv(here("data_processed/esco/st167/plasmid_mapping/st167_plam_cov.csv")) %>% 
+    mutate(ST = "ST167"),
+  read_csv(here("data_processed/esco/st410/plasmid_mapping/st410_plam_cov.csv")) %>% 
+    mutate(ST = "ST410")
+  ) %>% 
+  mutate(file = gsub("\\./","", file),
+         file = gsub("_filtered","", file),
+         file = gsub("/snps\\.aligned\\.fa","", file),
+         file = gsub("#", "_", file),
+         coverage = mapped_bases/ref_len,
+         identity = (mapped_bases-snp_dist_to_ref)/mapped_bases) %>% 
+  
+  as.data.frame() ->
+  plasmid_mapping
+
+rownames(plasmid_mapping) <- plasmid_mapping$file
+
+
+
+(
+  (ggtree(
+    treeio::tree_subset (st410_tree, 1083, levels_back = 0)
+  )  %<+% (
+    select(st410_metadata, accession, Country) %>% mutate(Country = if_else(
+      Country == "Malawi", "Malawi", NA_character_
+    ))
+  )) %>%
+    gheatmap(
+      select(esbl_cpe.ariba410, c("NDM-5", "OXA-181")),
+      font.size = 2.5,
+      width = 0.1,
+      colnames_position = "top",
+      color = NA,
+      colnames_offset_y = 2,
+      colnames_angle = 90,
+      offset = 0,
+      hjust = 0
+    ) + ylim(NA, 580) +
+    geom_tippoint(aes(color = Country), na.rm = TRUE, size = 0.5) +
+    scale_color_manual(
+      values  = viridis_pal(option = "magma")(4)[3],
+      na.translate = FALSE
+    )  + scale_fill_manual(
+      values = viridis_pal(option = "magma")(5)[c(2, 3)],
+      na.translate = FALSE,
+      name = "Beta-\nlactamase",
+      guide = FALSE
+    ) +
+    new_scale_fill()
+) %>%
+  facet_plot(panel = 'Coverage', data = plasmid_mapping,
+             geom = geom_barh,
+             mapping = aes(x = coverage, fill = "meh"),
+             stat='identity' ) %>%
+  facet_plot(panel = 'Identity', data = plasmid_mapping,
+             geom = geom_barh,
+             mapping = aes(x = identity, fill = "meh"),
+             stat='identity' ) +
+  scale_fill_manual(values = viridis_pal(option = "cividis")(7)[2]) +
+  theme_classic() + 
+  theme(legend.position = "none") ->
+  st410_plasmid_mapping_plot
+
+st410_plasmid_mapping_plot
+ggsave(here("manuscript/esco/figures/SUPP_FIG_3_st410_plasm_mapping_plot.svg"),
+       st410_plasmid_mapping_plot, width = 7, height = 6)
+
+(
+  (ggtree(
+    treeio::tree_subset (st167_tree, 320, levels_back = 0)
+  )  %<+% (
+    select(st167_metadata, accession, Country) %>% mutate(Country = if_else(
+      Country == "Malawi", "Malawi", NA_character_
+    ))
+  )) %>%
+    gheatmap(
+      select(esbl_cpe.ariba, c("NDM-5", "OXA-181")),
+      font.size = 2.5,
+      width = 0.1,
+      colnames_position = "top",
+      color = NA,
+      colnames_offset_y = 2,
+      colnames_angle = 90,
+      offset = 0,
+      hjust = 0
+    ) + ylim(NA, 340) +
+    geom_tippoint(aes(color = Country), na.rm = TRUE, size = 0.5) +
+    scale_color_manual(
+      values  = viridis_pal(option = "magma")(4)[3],
+      na.translate = FALSE
+    )  + scale_fill_manual(
+      values = viridis_pal(option = "magma")(5)[c(2, 3)],
+      na.translate = FALSE,
+      name = "Beta-\nlactamase",
+      guide = FALSE
+    ) +
+    new_scale_fill()
+) %>%
+  facet_plot(panel = 'Coverage', data = plasmid_mapping,
+             geom = geom_barh,
+             mapping = aes(x = coverage, fill = "meh"),
+             stat='identity' ) %>%
+  facet_plot(panel = 'Identity', data = plasmid_mapping,
+             geom = geom_barh,
+             mapping = aes(x = identity, fill = "meh"),
+             stat='identity' ) +
+  scale_fill_manual(values = viridis_pal(option = "cividis")(7)[2]) +
+  theme_classic() + 
+  theme(legend.position = "none") ->
+  st167_plasmid_mapping_plot
+
+
+
+
+```
+
+### ST167 - mapping to plasmid mapped back to phylogeny
+
+```{r st167-plasm, fig.width=7, fig.height=6}
+
+st167_plasmid_mapping_plot
+ggsave(here("manuscript/esco/figures/SUPP_FIG_2_st167_plasm_mapping_plot.svg"),
+       st167_plasmid_mapping_plot, width = 7, height = 6)
+
+
+
 ```
